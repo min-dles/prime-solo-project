@@ -1,3 +1,22 @@
+/* Beginning template / notes for CSS variables to more easily control
+overall themes of this app: */
+
+:root {
+  --black: #000;
+  --white: #fff;
+
+}
+
+.dark {
+  --primary: var(--black);
+  --secondary: var(--white);
+}
+
+.light {
+  --primary: var(--white);
+  --secondary: var(--black);
+}
+
 html,
 body,
 #react-root {

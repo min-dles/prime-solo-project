@@ -102,8 +102,8 @@ Moon
 .first-quarter {
   margin: auto;
   background: linear-gradient(90deg,
-      var(--moon-shadow),
-      var(--moonlight));
+      var(--moon-shadow) 46%,
+      var(--moonlight) 52%);
 }
 
 .new {
@@ -116,8 +116,8 @@ Moon
 .third-quarter {
   margin: auto;
   background: linear-gradient(90deg,
-      var(--moonlight),
-      var(--moon-shadow));
+      var(--moonlight) 46%,
+      var(--moon-shadow) 52%);
 }
 
 .full {

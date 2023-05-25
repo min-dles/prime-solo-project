@@ -5,10 +5,10 @@ import { put, takeLatest } from 'redux-saga/effects';
 // moonstore (was API call already made? Or is user logging in for 
 // first time in a while?)
 function* fetchMoonPhase() {
-    if (store.moonPhases !== {}) return;
+    // if (store.moonPhases !== {}) return;
+    console.log('moon.saga response:');
     try {
         const response = yield axios.get('/api/astronomy');
-        console.log('moon.saga response:', response);
         yield put({ type: 'SET_MOON', payload: response });
     } catch (error) {
         console.log('Moon saga fail:', error);

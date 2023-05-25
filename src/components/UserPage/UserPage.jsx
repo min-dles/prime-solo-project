@@ -18,6 +18,8 @@ function UserPage() {
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <p>Here are the moon phases right now:</p>
+      {/* This is how to access the Moon Phase (data type: string) in 
+      huge nested object from the external Astronomy API!  */}
       <p>{JSON.stringify(moonPhase.data.data.table.rows[0].cells[0].extraInfo.phase.string)}</p>
       <LogOutButton className="btn" />
     </div>

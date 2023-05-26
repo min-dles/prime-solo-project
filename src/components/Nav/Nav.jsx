@@ -43,14 +43,14 @@ function Nav() {
 
             <LogOutButton className="navLink" />
 
-            <button>New Moon</button>
-            <button>Waxing Crescent</button>
-            <button>First Quarter</button>
-            <button>Waxing Gibbous</button>
-            <button>Full Moon</button>
-            <button>Waning Gibbous</button>
-            <button>Third Quarter</button>
-            <button>Waning Crescent</button>
+            <button className="navLink">New Moon</button>
+            <button className="navLink">Waxing Crescent</button>
+            <button className="navLink">First Quarter</button>
+            <button className="navLink">Waxing Gibbous</button>
+            <button className="navLink">Full Moon</button>
+            <button className="navLink">Waning Gibbous</button>
+            <button className="navLink">Last Quarter</button>
+            <button className="navLink">Waning Crescent</button>
 
           </>
         )}

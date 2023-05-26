@@ -17,7 +17,6 @@ function Nav() {
     <div className="nav">
       <Link to="/home">
         <h2 className="nav-title">
-          {phase}
           <LunarPhase />
         </h2>
       </Link>

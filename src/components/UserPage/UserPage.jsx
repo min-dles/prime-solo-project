@@ -12,7 +12,7 @@ function UserPage() {
   // first check if there is already moonPhase object in the store.
   // If not, dispatch to make Astronomy API call for that data. 
   useEffect(() => {
-    if (moonPhase !== {}) {
+    if (moonPhase.data) {
       return
     } else {
       dispatch({ type: 'FETCH_MOON_PHASES' });

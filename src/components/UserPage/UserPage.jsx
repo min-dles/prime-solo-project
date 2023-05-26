@@ -9,18 +9,36 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const moonPhase = useSelector((store) => store.moonPhases);
 
+  // first check if there is already moonPhase object in the store.
+  // If not, dispatch to make Astronomy API call for that data. 
   useEffect(() => {
-    dispatch({ type: 'FETCH_MOON_PHASES' });
+    if (moonPhase !== {}) {
+      return
+    } else {
+      dispatch({ type: 'FETCH_MOON_PHASES' });
+    }
   }, [dispatch]);
+
+  // Handling async call to API; in the ELSE will put a loading gif/icon 
+  // while call is made 
+  function MoonTable() {
+    if (moonPhase.data) {
+      return (
+        <p>{JSON.stringify(moonPhase.data.data.table.rows[0].cells[0].extraInfo.phase.string)}</p>
+      )
+    } else {
+      return (
+        <p> there is no data yet </p>
+      )
+    }
+  }
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <p>Here are the moon phases right now:</p>
-      {/* This is how to access the Moon Phase (data type: string) in 
-      huge nested object from the external Astronomy API!  */}
-      <p>{JSON.stringify(moonPhase.data.data.table.rows[0].cells[0].extraInfo.phase.string)}</p>
+      <MoonTable />
       <LogOutButton className="btn" />
     </div>
   );

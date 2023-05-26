@@ -9,6 +9,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const moonRouter = require('./routes/template.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -22,7 +23,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
+// this route handles user auth for logging in & out: 
 app.use('/api/user', userRouter);
+app.use('/api/astronomy', moonRouter);
 
 // Serve static files
 app.use(express.static('build'));

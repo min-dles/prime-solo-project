@@ -78,3 +78,51 @@ Grid
   flex-basis: 100%;
   max-width: 100%;
 }
+
+/* --------------------------------------------------------------------------------
+CSS Variables
+-------------------------------------------------------------------------------- */
+:root {
+  --moonlight: rgb(238, 238, 238);
+  --moonshading: rgb(156, 156, 156);
+  --moon-shadow: rgb(51, 51, 51);
+}
+
+/* --------------------------------------------------------------------------------
+Moon
+-------------------------------------------------------------------------------- */
+
+.moon {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: solid 1px;
+}
+
+.first-quarter {
+  margin: auto;
+  background: linear-gradient(90deg,
+      var(--moon-shadow) 46%,
+      var(--moonlight) 52%);
+}
+
+.new {
+  margin-left: 70%;
+  background: linear-gradient(90deg,
+      var(--moonshading),
+      var(--moon-shadow));
+}
+
+.third-quarter {
+  margin: auto;
+  background: linear-gradient(90deg,
+      var(--moonlight) 46%,
+      var(--moon-shadow) 52%);
+}
+
+.full {
+  margin-left: 10%;
+  background: linear-gradient(90deg,
+      var(--moonlight),
+      var(--moonshading));
+}

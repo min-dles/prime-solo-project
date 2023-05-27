@@ -4,14 +4,13 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import LunarPhase from '../LunarPhase/LunarPhase';
-import { Moon } from 'lunarphase-js';
+import ChoreCategories from '../ChoreCategories/ChoreCategories';
 
 // NavBar is going to be transformed to all-black with "clock" 
 // on left side. CONDITIONAL RENDERING - nav bar will NOT appear
 // UNTIL user is logged in 
 function Nav() {
   const user = useSelector((store) => store.user);
-  const phase = Moon.lunarPhase();
 
   return (
     <div className="nav">
@@ -42,6 +41,7 @@ function Nav() {
             </Link>
 
             <LogOutButton className="navLink" />
+            <ChoreCategories />
 
             <button className="navLink">New Moon</button>
             <button className="navLink">Waxing Crescent</button>

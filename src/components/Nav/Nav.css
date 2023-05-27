@@ -1,12 +1,15 @@
 .nav {
+  position: fixed;
+  top: 0;
+
   /* flex box layout */
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  margin: 0 0 30px;
+  /* margin: 0 0 30px;
+  overflow: hidden; */
   background-color: #000000;
-  overflow: hidden;
 }
 
 .nav a {

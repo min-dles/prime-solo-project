@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
-import LunarPhase from '../LunarPhase/LunarPhase';
-import ChoreCategories from '../ChoreCategories/ChoreCategories';
 
 // NavBar is going to be transformed to all-black with "clock" 
 // on left side. CONDITIONAL RENDERING - nav bar will NOT appear
@@ -14,11 +12,6 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">
-          <LunarPhase />
-        </h2>
-      </Link>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
@@ -41,7 +34,6 @@ function Nav() {
             </Link>
 
             <LogOutButton className="navLink" />
-            {/* <ChoreCategories /> */}
 
             <button className="navLink">New Moon</button>
             <button className="navLink">Waxing Crescent</button>

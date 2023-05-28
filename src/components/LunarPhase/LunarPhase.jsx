@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Moon } from 'lunarphase-js';
 import './LunarPhase.css';
 
@@ -16,11 +17,13 @@ function LunarPhase() {
     const classString = phase.toLowerCase().split(' ').join('-');
 
     return (
-        <>
-            <p>Current Phase: {phase}</p>
-            <div className={`moon ${classString}`}></div>
-            <p>Today's Date: {dateString}</p>
-        </>
+        <div>
+            <Link to="/home">
+                <p>Current Phase: {phase}</p>
+                <div className={`moon ${classString}`}></div>
+                <p>Today's Date: {dateString}</p>
+            </Link>
+        </div>
     )
 }
 

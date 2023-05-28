@@ -18,6 +18,7 @@ import ChoreCategories from '../ChoreCategories/ChoreCategories';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
+import LunarPhase from '../LunarPhase/LunarPhase';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
@@ -34,9 +35,8 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <div id="page-layout">
         <Nav />
-        <ChoreCategories />
         <div className="page-content">
 
           <Switch>
@@ -61,6 +61,9 @@ function App() {
               exact
               path="/user"
             >
+              {/* logged in users will see nav options for chore categories and lunar phase info */}
+              <LunarPhase /> 
+              <ChoreCategories />
               <UserPage />
             </ProtectedRoute>
 

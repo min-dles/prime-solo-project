@@ -7,6 +7,8 @@ import { Moon } from "lunarphase-js";
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
+// Footer will only appear when user is not logged in 
+import Footer from '../Footer/Footer';
 
 function LandingPage() {
   const [heading, setHeading] = useState('Welcome!');
@@ -44,6 +46,7 @@ function LandingPage() {
           </center>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

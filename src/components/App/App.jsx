@@ -9,8 +9,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
@@ -36,7 +34,7 @@ function App() {
   return (
     <Router>
       <div id="page-layout">
-        <Nav />
+        <Nav className="item-a" />
         <div className="page-content">
 
           <Switch>
@@ -126,7 +124,6 @@ function App() {
             </Route>
           </Switch>
         </div>
-        <Footer />
       </div>
     </Router>
   );

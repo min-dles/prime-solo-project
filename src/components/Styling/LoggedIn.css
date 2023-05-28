@@ -1,0 +1,27 @@
+/* --------------CSS GRID-------------- */
+.nav-options {
+    grid-area: navbar;
+}
+
+.lunar-nav {
+    grid-area: lunar-nav;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.page-content {
+    grid-area: page-content;
+}
+
+.page-layout {
+    display: grid;
+    grid-template-columns: [start-one] 200px [two] 1fr [three] 1fr [end-four];
+    grid-template-rows: [row1-start] 80px [row2] 150px [row3] 1fr [row4] 1fr [row5-end];
+    grid-template-areas:
+      ". . navbar"
+      "lunar-nav lunar-nav lunar-nav"
+      "sidebar page-content page-content"
+      "sidebar page-content page-content";
+}

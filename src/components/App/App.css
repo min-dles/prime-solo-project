@@ -33,24 +33,6 @@ img {
   max-width: 100%;
 }
 
-/* --------------CSS GRID-------------- */
-.item-a {
-  grid-area: navbar;
-}
-
-.page-content {
-  grid-area: user-content;
-}
-
-#page-layout {
-  display: grid;
-  grid-template-columns: [sidebar] 200px [main-content] 1fr;
-  grid-template-rows: [top-nav] 200px [main-content] 1fr;
-  /* grid-template-areas:
-    "navbar navbar"
-    "navbar user-content"; */
-}
-
 /* --------------------------------------------------------------------------------
 Alert
 -------------------------------------------------------------------------------- */

@@ -33,9 +33,9 @@ function App() {
 
   return (
     <Router>
-      <div id="page-layout">
-        <Nav className="item-a" />
-        <div className="page-content">
+      <div>
+        {/* <Nav /> */}
+        <div>
 
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -60,8 +60,6 @@ function App() {
               path="/user"
             >
               {/* logged in users will see nav options for chore categories and lunar phase info */}
-              <LunarPhase />
-              <ChoreCategories />
               <UserPage />
             </ProtectedRoute>
 

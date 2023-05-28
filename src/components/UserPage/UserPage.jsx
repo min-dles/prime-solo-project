@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
+import '../Styling/LoggedIn.css';
+
+// Import Components:
+import LunarPhase from '../LunarPhase/LunarPhase';
+import Nav from '../Nav/Nav';
+import ChoreCategories from '../ChoreCategories/ChoreCategories';
 
 function UserPage() {
 
@@ -34,12 +40,27 @@ function UserPage() {
   }
 
   return (
-    <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
-      <p>Here are the moon phases right now:</p>
-      <MoonTable />
-      <LogOutButton className="btn" />
+    <div className="page-layout">
+
+      <div className="nav-options">
+        <Nav />
+      </div>
+
+      <div className="lunar-nav">
+        <LunarPhase />
+      </div>
+
+      <div className="sidebar">
+        <ChoreCategories />
+      </div>
+
+      <div className="page-content">
+        <h2>Welcome, {user.username}!</h2>
+        <p>Your ID is: {user.id}</p>
+        <p>Here are the moon phases right now:</p>
+        <MoonTable />
+        <LogOutButton className="btn" />
+      </div>
     </div>
   );
 }

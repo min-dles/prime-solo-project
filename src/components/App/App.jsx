@@ -62,7 +62,7 @@ function App() {
               path="/user"
             >
               {/* logged in users will see nav options for chore categories and lunar phase info */}
-              <LunarPhase /> 
+              <LunarPhase />
               <ChoreCategories />
               <UserPage />
             </ProtectedRoute>
@@ -72,6 +72,9 @@ function App() {
               exact
               path="/info"
             >
+              {/* logged in users will see nav options for chore categories and lunar phase info */}
+              <LunarPhase />
+              <ChoreCategories />
               <InfoPage />
             </ProtectedRoute>
 

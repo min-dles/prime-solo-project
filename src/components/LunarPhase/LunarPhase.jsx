@@ -17,12 +17,22 @@ function LunarPhase() {
     const classString = phase.toLowerCase().split(' ').join('-');
 
     return (
-        <div>
+        <div className="nav">
             <Link to="/home">
-                <p>Current Phase: {phase}</p>
+                <p className="navLink">Current Phase: {phase}</p>
                 <div className={`moon ${classString}`}></div>
-                <p>Today's Date: {dateString}</p>
+                <p className="navLink">Today's Date: {dateString}</p>
             </Link>
+            <div>
+                <button className="navLink">New Moon</button>
+                <button className="navLink">Waxing Crescent</button>
+                <button className="navLink">First Quarter</button>
+                <button className="navLink">Waxing Gibbous</button>
+                <button className="navLink">Full Moon</button>
+                <button className="navLink">Waning Gibbous</button>
+                <button className="navLink">Last Quarter</button>
+                <button className="navLink">Waning Crescent</button>
+            </div>
         </div>
     )
 }

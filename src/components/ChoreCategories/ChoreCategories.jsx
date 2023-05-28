@@ -4,7 +4,7 @@ import './ChoreCategories.css';
 function ChoreCategories() {
 
     return (
-        <div className="container">
+        <div className="container chore-categories">
 
             <h3>Chore Categories:</h3>
 

@@ -41,7 +41,7 @@ function Nav() {
             </Link>
 
             <LogOutButton className="navLink" />
-            <ChoreCategories />
+            {/* <ChoreCategories /> */}
 
             <button className="navLink">New Moon</button>
             <button className="navLink">Waxing Crescent</button>

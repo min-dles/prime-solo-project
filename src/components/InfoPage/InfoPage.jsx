@@ -1,14 +1,36 @@
 import React from 'react';
+import '../Styling/LoggedIn.css';
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
+// Import Components:
+import Nav from '../Nav/Nav';
+import LunarClock from '../LunarPhase/LunarClock';
+import LunarBtns from '../LunarPhase/LunarBtns';
+import ChoreCategories from '../ChoreCategories/ChoreCategories';
 
 function InfoPage() {
   return (
-    <div className="container">
-      <p>Info Page</p>
+    <div className="page-layout">
+
+      <div className="nav-options">
+        <Nav />
+      </div>
+
+      <div className="lunar-clock">
+        <LunarClock />
+      </div>
+
+      <div className="lunar-btns">
+        <LunarBtns />
+      </div>
+
+      <div className="sidebar">
+        <ChoreCategories />
+      </div>
+
+      <div className="page-content">
+        <p>Info Page</p>
+        <p>Need to prepare More Info Here</p>
+      </div>
     </div>
   );
 }

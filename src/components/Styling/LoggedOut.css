@@ -1,0 +1,29 @@
+/* --------------CSS GRID-------------- */
+.content-background {
+    grid-area: content-frame;
+}
+
+.content-a {
+    grid-area: item-a;
+    background-color: white;
+}
+
+.content-b {
+    grid-area: item-b;
+}
+
+.blank-space {
+    grid-area: white-border;
+}
+
+.page-container {
+    background-color: black;
+    display: grid;
+    grid-template-columns: 1fr 300px 1fr 300px 1fr;
+    grid-template-rows: 80px 300px 80px 1fr;
+    grid-template-areas:
+        ". . . . ."
+        ". item-a . item-b ."
+        ". . . . ."
+        "white-border white-border white-border white-border white-border";
+}

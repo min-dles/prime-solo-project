@@ -1,0 +1,37 @@
+/* --------------CSS GRID-------------- */
+.nav-options {
+    grid-area: navbar;
+    justify-self: end;
+    align-self: center;
+    background-color: #000000;
+}
+
+.lunar-clock {
+    grid-area: lunar-clock;
+}
+
+.lunar-btns {
+    grid-area: lunar-btns;
+    place-self: center stretch;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.page-content {
+    background-color: white;
+    grid-area: page-content;
+}
+
+.page-layout {
+    background-color: #000000;
+    display: grid;
+    grid-template-columns: [start-one] 200px [two] 1fr [three] 1fr [end-four];
+    grid-template-rows: [row1-start] 80px [row2] 200px [row3] 1fr [row4] 1fr [row5-end];
+    grid-template-areas:
+    "lunar-clock navbar navbar"
+    "lunar-clock lunar-btns lunar-btns"
+    "sidebar page-content page-content"
+    "sidebar page-content page-content";
+}

@@ -1,0 +1,102 @@
+/* ----- CSS VARIABLES ------ */
+
+:root {
+    --moonlight: rgb(238, 238, 238);
+    --moonshading: rgb(156, 156, 156);
+    --moon-shadow: rgb(51, 51, 51);
+}
+
+/* ----- CSS GRID ------ */
+.moon-clock {
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+.moon-btns {
+    grid-area: 1 / 2 / 3 / 6;
+}
+
+.lunarnav-layout {
+    display: grid;
+    grid-template-columns: 200px repeat(4, 1fr);
+    grid-template-rows: 1fr 1 fr;
+    background-color: #000000;
+}
+
+/* ----- MOON CLOCK ------ */
+
+.clock-label, 
+.clock-label a {
+    color: var(--moonlight);
+    background-color: #000000;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.clock-label:hover {
+    background-color: var(--moonshading);
+    text-decoration: none;
+}
+
+.moon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: solid 1px;
+}
+
+.first-quarter {
+    margin: auto;
+    background: linear-gradient(90deg,
+            var(--moon-shadow) 46%,
+            var(--moonlight) 52%);
+}
+
+.waxing-crescent {
+    margin: auto;
+    background: linear-gradient(90deg,
+            var(--moon-shadow) 73%,
+            var(--moonlight) 78%);
+}
+
+.new {
+    margin-left: 70%;
+    background: linear-gradient(90deg,
+            var(--moonshading),
+            var(--moon-shadow));
+}
+
+.waning-crescent {
+    margin: auto;
+    background: linear-gradient(90deg,
+            var(--moonlight) 22%,
+            var(--moon-shadow) 28%);
+}
+
+.last-quarter {
+    margin: auto;
+    background: linear-gradient(90deg,
+            var(--moonlight) 46%,
+            var(--moon-shadow) 52%);
+}
+
+.waning-gibbous {
+    margin: auto;
+    background: linear-gradient(90deg,
+            var(--moonlight) 73%,
+            var(--moon-shadow) 78%);
+}
+
+.full {
+    margin-left: 10%;
+    background: linear-gradient(90deg,
+            var(--moonlight),
+            var(--moonshading));
+}
+
+.waxing-gibbous {
+    margin: auto;
+    background: linear-gradient(90deg,
+            var(--moon-shadow) 22%,
+            var(--moonlight) 28%);
+}

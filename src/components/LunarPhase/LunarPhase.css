@@ -24,6 +24,20 @@
 
 /* ----- MOON CLOCK ------ */
 
+.clock-label, 
+.clock-label a {
+    color: var(--moonlight);
+    background-color: #000000;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.clock-label:hover {
+    background-color: var(--moonshading);
+    text-decoration: none;
+}
+
 .moon {
     width: 150px;
     height: 150px;

@@ -8,15 +8,12 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Nav from '../Nav/Nav';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import ChoreCategories from '../ChoreCategories/ChoreCategories';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
-import LunarPhase from '../LunarPhase/LunarClock';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
@@ -55,7 +52,6 @@ function App() {
             exact
             path="/user"
           >
-            {/* logged in users will see nav options for chore categories and lunar phase info */}
             <UserPage />
           </ProtectedRoute>
 
@@ -64,9 +60,6 @@ function App() {
             exact
             path="/info"
           >
-            {/* logged in users will see nav options for chore categories and lunar phase info */}
-            <LunarPhase />
-            <ChoreCategories />
             <InfoPage />
           </ProtectedRoute>
 

@@ -20,9 +20,9 @@ function LunarClock() {
         <div className="lunarnav-layout">
             <div className="moon-clock">
                 <Link to="/home">
-                    <p className="navLink">Current Phase: {phase}</p>
-                    <p className="navLink">Today's Date: {dateString}</p>
+                    <p className="clock-label">Current Phase: {phase}</p>
                     <div className={`moon ${classString}`}></div>
+                    <p className="clock-label">Today's Date: {dateString}</p>
                 </Link>
             </div>
             

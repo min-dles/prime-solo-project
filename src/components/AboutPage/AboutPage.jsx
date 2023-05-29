@@ -1,16 +1,18 @@
 import React from 'react';
-
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+import '../Styling/LoggedOut.css';
+import Nav from '../Nav/Nav';
 
 function AboutPage() {
   return (
-    <div className="container">
-      <div>
+    <div className="page-container">
+      <div className="content-background"></div>
+      <div className="content-a">
         <p>This about page is for anyone to read!</p>
       </div>
+      <div className="content-b">
+        <Nav />
+      </div>
+      <div className="blank-space"></div>
     </div>
   );
 }

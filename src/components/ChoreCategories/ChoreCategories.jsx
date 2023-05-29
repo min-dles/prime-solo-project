@@ -8,7 +8,7 @@ function ChoreCategories() {
 
             <h3>Chore Categories:</h3>
 
-            <button className="btn-styling">Family</button>
+            <button className="btn-styling">Household</button>
             <button className="btn-styling">Cleaning</button>
             <button className="btn-styling">Social</button>
             <button className="btn-styling">Documents</button>

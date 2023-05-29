@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../Styling/LoggedIn.css';
 
 // Import Components:
-import LunarPhase from '../LunarPhase/LunarPhase';
 import Nav from '../Nav/Nav';
+import LunarClock from '../LunarPhase/LunarClock';
+import LunarBtns from '../LunarPhase/LunarBtns';
 import ChoreCategories from '../ChoreCategories/ChoreCategories';
 
 function UserPage() {
@@ -46,8 +47,12 @@ function UserPage() {
         <Nav />
       </div>
 
-      <div className="lunar-nav">
-        <LunarPhase />
+      <div className="lunar-clock">
+        <LunarClock />
+      </div>
+
+      <div className="lunar-btns">
+        <LunarBtns />
       </div>
 
       <div className="sidebar">

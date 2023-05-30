@@ -14,7 +14,7 @@ function ChoreCategories() {
             <button className="btn-styling">Documents</button>
             <button className="btn-styling">Health</button>
             <button className="btn-styling">Shopping</button>
-
+            
         </div>
     )
 }

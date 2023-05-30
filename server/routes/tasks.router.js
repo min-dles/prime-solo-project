@@ -65,5 +65,22 @@ router.put('/:id', (req, res) => {
         })
 })
 
+// DELETE route to completely delete a task from the user_todo table in DB
+    // NOTE: 1st step is to test the route with a SELECT query before implemeneting DELETE
+router.delete('/:id', (req, res) => {
+    let idToDelete = req.params.id;
+    let sqlQuery = `
+        SELECT * FROM "user_todo"
+            WHERE "id"=$1;`;
+    let sqlValues = [idToDelete];
+    pool.query(sqlQuery, sqlValues)
+    .then((dbRes) => {
+        res.sendStatus(200);
+    }).catch((dbErr) => {
+        console.log('DELETE task-list/:id error:', dbErr);
+        res.sendStatus(500);
+    })
+})
+
 
 module.exports = router;

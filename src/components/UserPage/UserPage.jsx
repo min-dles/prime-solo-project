@@ -15,6 +15,8 @@ function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const moonPhase = useSelector((store) => store.moonPhases);
+  const tasks = useSelector((store) => store.tasks);
+  console.log('these are the tasks from DB:', tasks);
 
   // first check if there is already moonPhase object in the store.
   // If not, dispatch to make Astronomy API call for that data. 

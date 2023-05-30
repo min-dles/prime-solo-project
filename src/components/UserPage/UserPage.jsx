@@ -16,6 +16,13 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const moonPhase = useSelector((store) => store.moonPhases);
   const tasks = useSelector((store) => store.tasks);
+  
+  // dispatch to store for the tasks list:
+  useEffect(() => {
+    dispatch({
+      type: 'FETCH_TASKS'
+    })
+  }, []);
   console.log('these are the tasks from DB:', tasks);
 
   // first check if there is already moonPhase object in the store.

@@ -11,7 +11,14 @@ const pool = require('../modules/pool');
 // GET route for (authenticated/logged in) user's tasks: 
 router.get('/', rejectUnauthenticated, (req, res) => {
     let sqlQuery = `
-        SELECT * FROM "user_todo"
+        SELECT user_todo.id AS "task_id", 
+            user_todo.user_id, 
+            user_todo.todo_description AS "task", 
+            user_todo.moon_id AS "phase", 
+            chore_categories.category AS "category" 
+        FROM "user_todo"
+        JOIN "chore_categories" 
+            ON user_todo.category_id=chore_categories.id
         WHERE "user_id"=($1);`;
 
     let sqlValues = [req.user.id];

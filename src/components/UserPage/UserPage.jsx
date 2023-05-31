@@ -77,8 +77,8 @@ function UserPage() {
         <h3>Your Tasks:</h3>
         {tasks.map(task => {
           return (
-            <ul key={task.id}>
-              <li>Description: {task.todo_description}, Category: {task.category_id}, Phase: {task.moon_id}</li>
+            <ul key={task.task_id}>
+              <li>Description: {task.task}, Category: {task.category}, Phase: {task.phase}</li>
             </ul>
           )
         })}

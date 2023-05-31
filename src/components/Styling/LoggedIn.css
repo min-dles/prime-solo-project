@@ -1,4 +1,23 @@
 /* --------------CSS GRID-------------- */
+* {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.page-layout {
+    background-color: #000000;
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: [start-one] 200px [two] 1fr [three] 1fr [end-four];
+    grid-template-rows: [row1-start] 80px [row2] 200px [row3] 1fr [row4] 1fr [row5-end];
+    grid-template-areas:
+    "lunar-clock navbar navbar"
+    "lunar-clock lunar-btns lunar-btns"
+    "sidebar page-content page-content"
+    "sidebar page-content page-content";
+}
+
 .nav-options {
     grid-area: navbar;
     justify-self: end;
@@ -17,24 +36,16 @@
 
 .sidebar {
     grid-area: sidebar;
+    height: 100vh;
 }
 
 .page-content {
     background-color: white;
     grid-area: page-content;
+    padding-left: 30px;
+    padding-top: 30px;
 }
 
-.page-layout {
-    background-color: #000000;
-    display: grid;
-    grid-template-columns: [start-one] 200px [two] 1fr [three] 1fr [end-four];
-    grid-template-rows: [row1-start] 80px [row2] 200px [row3] 1fr [row4] 1fr [row5-end];
-    grid-template-areas:
-    "lunar-clock navbar navbar"
-    "lunar-clock lunar-btns lunar-btns"
-    "sidebar page-content page-content"
-    "sidebar page-content page-content";
-}
 
 /* --------------ITEM STYLING ELEMENTS-------------- */
 
@@ -43,7 +54,7 @@ another class for color/gradient so they look different. */
 .chip {
     display: inline-block;
     padding: 0 15px;
-    margin: 0 0 0 10px;
+    margin-left: 10px;
     height: 30px;
     font-size: 15px;
     line-height: 30px;

@@ -16,7 +16,7 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const moonPhase = useSelector((store) => store.moonPhases);
   const tasks = useSelector((store) => store.tasks);
-  
+
   // dispatch to store for the tasks list:
   useEffect(() => {
     dispatch({
@@ -70,10 +70,18 @@ function UserPage() {
 
       <div className="page-content">
         <h2>Welcome, {user.username}!</h2>
-        <p>Your ID is: {user.id}</p>
+        <p>Your user ID is: {user.id}</p>
+        <LogOutButton className="btn" />
         <p>Here are the moon phases right now:</p>
         <MoonTable />
-        <LogOutButton className="btn" />
+        <h3>Your Tasks:</h3>
+        {tasks.map(task => {
+          return (
+            <ul key={task.id}>
+              <li>Description: {task.todo_description}, Category: {task.category_id}, Phase: {task.moon_id}</li>
+            </ul>
+          )
+        })}
       </div>
     </div>
   );

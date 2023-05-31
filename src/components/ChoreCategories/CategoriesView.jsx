@@ -22,13 +22,12 @@ function CategoriesView() {
 
     // dispatch to store for the tasks list; make sure to call DB only if store is empty: 
     useEffect(() => {
-        if (tasks.length) {
-            return
-        } else {
-        dispatch({
-            type: 'FETCH_TASKS'});
+        if (!tasks.length) {
+          dispatch({
+            type: 'FETCH_TASKS'
+          });
         }
-    }, [dispatch]);
+      }, [dispatch]);
 
     function listByCategory(tasksArray) {
         let categoryArray = [];

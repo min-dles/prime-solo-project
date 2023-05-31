@@ -17,17 +17,14 @@ function UserPage() {
   const moonPhase = useSelector((store) => store.moonPhases);
   const tasks = useSelector((store) => store.tasks);
 
-  // dispatch to store for the tasks list:
-  // dispatch to store for the tasks list; make sure to call DB only if store is empty: 
+  // dispatch to store for the tasks list; make sure to call DB only if store is empty:
   useEffect(() => {
-    if (tasks.length) {
-        return
-    } else {
-    dispatch({
-        type: 'FETCH_TASKS'});
+    if (!tasks.length) {
+      dispatch({
+        type: 'FETCH_TASKS'
+      });
     }
-}, [dispatch]);
-  console.log('these are the tasks from DB:', tasks);
+  }, [dispatch]);
 
   // first check if there is already moonPhase object in the store.
   // If not, dispatch to make Astronomy API call for that data. 
@@ -82,8 +79,8 @@ function UserPage() {
         {tasks.map(task => {
           return (
             <ul key={task.task_id}>
-              <li> Description: {task.task}  
-                <div className="chip">{task.category}</div> 
+              <li> Description: {task.task}
+                <div className="chip">{task.category}</div>
                 <div className="chip">Phase: {task.phase}</div>
               </li>
             </ul>

@@ -18,11 +18,15 @@ function UserPage() {
   const tasks = useSelector((store) => store.tasks);
 
   // dispatch to store for the tasks list:
+  // dispatch to store for the tasks list; make sure to call DB only if store is empty: 
   useEffect(() => {
+    if (tasks.length) {
+        return
+    } else {
     dispatch({
-      type: 'FETCH_TASKS'
-    })
-  }, []);
+        type: 'FETCH_TASKS'});
+    }
+}, [dispatch]);
   console.log('these are the tasks from DB:', tasks);
 
   // first check if there is already moonPhase object in the store.

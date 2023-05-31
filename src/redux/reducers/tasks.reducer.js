@@ -3,7 +3,7 @@ const tasksReducer = (state = [], action) => {
         case 'SET_TASKS':
             return action.payload;
         default:
-            return state;
+            return state; 
     }
 };
 

@@ -4,3 +4,6 @@ Chore Cycle is an opportunity to sync your chore list with the moon phases so yo
 
 ## UNDER CONSTRUCTION: 
 Estimated completion - June 2nd 2023
+
+## STRETCH GOAL(S)
+1. useParams for identifying the Moon Phase ID when user clicks on a Moon Phase button and wants to see only task items with that Moon Phase ID. 

@@ -20,12 +20,15 @@ function CategoriesView() {
     const [category, setCategory] = useState('Cleaning');
     const tasks = useSelector(store => store.tasks);
 
-    // dispatch to store for the tasks list:
+    // dispatch to store for the tasks list; make sure to call DB only if store is empty: 
     useEffect(() => {
+        if (tasks.length) {
+            return
+        } else {
         dispatch({
-            type: 'FETCH_TASKS'
-        })
-    }, []);
+            type: 'FETCH_TASKS'});
+        }
+    }, [dispatch]);
 
     function listByCategory(tasksArray) {
         let categoryArray = [];
@@ -37,8 +40,8 @@ function CategoriesView() {
         console.log('new array:', categoryArray);
         return categoryArray;
     }
-
     const tasksByCategory = listByCategory(tasks);
+    console.log(tasksByCategory);
 
     return (
         <div className="page-layout">

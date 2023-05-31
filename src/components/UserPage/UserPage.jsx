@@ -78,7 +78,10 @@ function UserPage() {
         {tasks.map(task => {
           return (
             <ul key={task.task_id}>
-              <li>Description: {task.task}, Category: {task.category}, Phase: {task.phase}</li>
+              <li> Description: {task.task}  
+                <div className="chip">{task.category}</div> 
+                <div className="chip">Phase: {task.phase}</div>
+              </li>
             </ul>
           )
         })}

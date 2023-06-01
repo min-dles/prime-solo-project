@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 import './ChoreCategories.css';
 
 function ChoreCategories() {
@@ -15,13 +16,18 @@ function ChoreCategories() {
     ];
 
     const dispatch = useDispatch();
+    const history = useHistory();
+    const location = useLocation();
 
     // listen for btn click & update state & dispatch to update global state in Redux store: 
     const chooseCategory = (categoryName) => {
         dispatch({
             type: 'SET_CATEGORY',
             payload: categoryName
-        })
+        });
+        if (location.pathname !== '/user/categories') {
+            history.push('/user/categories');
+        }
     }
 
     return (

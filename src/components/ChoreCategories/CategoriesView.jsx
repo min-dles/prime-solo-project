@@ -17,7 +17,7 @@ import ChoreCategories from '../ChoreCategories/ChoreCategories';
 
 function CategoriesView() {
     const dispatch = useDispatch();
-    const [category, setCategory] = useState('Cleaning');
+    const category = useSelector(store => store.categories);
     const tasks = useSelector(store => store.tasks);
 
     // dispatch to store for the tasks list; make sure to call DB only if store is empty: 

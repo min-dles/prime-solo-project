@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
+import LogOutButton from '../LogOutButton/LogOutButton';
 import '../Styling/LoggedIn.css';
 
 // Import Components:
@@ -12,7 +12,6 @@ import ChoreCategories from '../ChoreCategories/ChoreCategories';
 function UserPage() {
 
   const dispatch = useDispatch();
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const moonPhase = useSelector((store) => store.moonPhases);
   const tasks = useSelector((store) => store.tasks);

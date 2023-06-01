@@ -7,3 +7,4 @@ Estimated completion - June 2nd 2023
 
 ## STRETCH GOAL(S)
 1. useParams for identifying the Moon Phase ID when user clicks on a Moon Phase button and wants to see only task items with that Moon Phase ID. 
+2. Refactoring for logged in/out template views: react-router layout components

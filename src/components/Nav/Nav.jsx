@@ -29,6 +29,14 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/user/add-task">
+              Add Task
+            </Link>
+
+            <Link className="navLink" to="/user/edit-delete">
+              Edit / Delete Task
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>

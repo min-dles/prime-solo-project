@@ -13,6 +13,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
 import AddTask from '../AddEditDelete/AddTask';
 import CategoriesView from '../ChoreCategories/CategoriesView';
+import EditOrDelete from '../AddEditDelete/EditOrDelete';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -63,6 +64,10 @@ function App() {
 
           <ProtectedRoute exact path="/user/add-task">
             <AddTask />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/user/edit-delete">
+            <EditOrDelete />
           </ProtectedRoute>
 
           <ProtectedRoute

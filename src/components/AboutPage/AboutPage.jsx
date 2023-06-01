@@ -7,7 +7,7 @@ function AboutPage() {
     <div className="page-container">
       <div className="content-background"></div>
       <div className="content-a">
-        <p>This about page is for anyone to read!</p>
+        <p>Use Chore Cycle to sync your recurring tasks with the phases of the moon! Get more in tune with your monthly rituals and the rhythms of nature.</p>
       </div>
       <div className="content-b">
         <Nav />

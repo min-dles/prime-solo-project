@@ -17,63 +17,71 @@ import ChoreCategories from '../ChoreCategories/ChoreCategories';
 // 4. Display the tasks for user 
 
 function CategoriesView() {
-    const dispatch = useDispatch();
-    const { selectedCategory } = useParams();
-    const tasks = useSelector(store => store.tasks);
+	const dispatch = useDispatch();
+	const { selectedCategory } = useParams();
+	const tasks = useSelector(store => store.tasks);
 
-    // dispatch to store for the tasks list; make sure to call DB only if store is empty: 
-    useEffect(() => {
-        if (!tasks.length) {
-          dispatch({
-            type: 'FETCH_TASKS'
-          });
-        }
-      }, [dispatch]);
+	// dispatch to store for the tasks list; make sure to call DB only if store is empty: 
+	useEffect(() => {
+		if (!tasks.length) {
+			dispatch({
+				type: 'FETCH_TASKS'
+			});
+		}
+	}, [dispatch]);
 
-    function listByCategory(tasksArray) {
-        let categoryArray = [];
-        for (let obj of tasksArray) {
-            if (selectedCategory === obj.category) {
-                categoryArray.push(obj);
-            }
-        }
-        return categoryArray;
-    }
+	function listByCategory(tasksArray) {
+		let categoryArray = [];
+		for (let obj of tasksArray) {
+			if (selectedCategory === obj.category) {
+				categoryArray.push(obj);
+			}
+		}
+		return categoryArray;
+	}
 
-    const tasksByCategory = listByCategory(tasks);
+	const tasksByCategory = listByCategory(tasks);
 
-    return (
-        <div className="page-layout">
+	return (
+		<div className="page-layout">
 
-            <div className="nav-options">
-                <Nav />
-            </div>
+			<div className="nav-options">
+				<Nav />
+			</div>
 
-            <div className="lunar-clock">
-                <LunarClock />
-            </div>
+			<div className="lunar-clock">
+				<LunarClock />
+			</div>
 
-            <div className="lunar-btns">
-                <LunarBtns />
-            </div>
+			<div className="lunar-btns">
+				<LunarBtns />
+			</div>
 
-            <div className="sidebar">
-                <ChoreCategories />
-            </div>
+			<div className="sidebar">
+				<ChoreCategories />
+			</div>
 
-            <div className="page-content">
-                {tasksByCategory.map(task => {
-                    return (
-                        <ul key={task.task_id}>
-                            <li>Description: {task.task}
-                                <div className="chip">Phase: {task.phase}</div>
-                            </li>
-                        </ul>
-                    )
-                })}
-            </div>
-        </div>
-    )
+			<div className="page-content">
+				<h3>{selectedCategory} Category:</h3>
+
+				{
+					tasksByCategory.length ? tasksByCategory.map(task => {
+						return (
+							<ul key={task.task_id}>
+								<li>Description: {task.task}
+									<div className="chip">Phase: {task.phase}</div>
+								</li>
+							</ul>
+						)
+					}) : (
+						<p>
+							There is nothing here.
+						</p>
+					)
+				}
+			</div>
+		</div>
+	)
 }
 
 export default CategoriesView;

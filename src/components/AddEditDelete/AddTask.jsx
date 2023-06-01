@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import '../Styling/LoggedIn.css';
 
 // Import Components:
@@ -11,9 +10,10 @@ import ChoreCategories from '../ChoreCategories/ChoreCategories';
 
 function AddTask() {
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const [taskDescription, setTaskDescription] = useState('');
-  const [moonPhase, setMoonPhase] = useState('');
-  const [categoryChosen, setCategoryChosen] = useState('');
+  const [moonPhase, setMoonPhase] = useState(0);
+  const [categoryChosen, setCategoryChosen] = useState(0);
 
   // make variables for moon phases and chore category arrays:
   const moonPhases = [
@@ -53,6 +53,10 @@ function AddTask() {
 
   const choreCategories = [
     {
+      name: 'Choose Category',
+      id: 0
+    },
+    {
       name: 'Household',
       id: 1
     },
@@ -89,16 +93,22 @@ function AddTask() {
 
     console.log('New task being sent to DB:', data);
 
-    axios({
-      method: 'POST',
-      url: '/api/task-list',
-      data: data
-    }).then((response) => {
-      console.log('call went thru:', response);
-      // CLEAR FORMS FUNCTION
-    }).catch((error) =>{
-      console.log('there was an error:', error);
-    })
+    if (taskDescription !== '' && categoryChosen > 0) {
+      dispatch({
+        type: 'ADD_TASK',
+        payload: data
+      })
+      clearFields();
+    } else {
+      alert('Please fill out all fields before submitting a new task entry!');
+    }
+  }
+
+  // need to clear fields after user sends a new task to DB:
+  const clearFields = () => {
+    setTaskDescription('');
+    setMoonPhase(0);
+    setCategoryChosen(0);
   }
 
   return (
@@ -121,7 +131,7 @@ function AddTask() {
       </div>
 
       <form className="page-content" onSubmit={submitAddTask}>
-        <label for="description">Task Description:</label>
+        <label htmlFor="description">Task Description:</label>
         <input
           type="text"
           id="description"
@@ -131,10 +141,10 @@ function AddTask() {
           onChange={(event) => { setTaskDescription(event.target.value) }}
         />
 
-        <label for="phase">Choose A Moon Phase:</label>
+        <label htmlFor="phase">Choose A Moon Phase:</label>
         {moonPhases.map(phase => {
           return (
-            <label>
+            <label key={phase.id}>
               <input
                 type="radio"
                 id={phase.id}
@@ -147,11 +157,15 @@ function AddTask() {
           )
         })}
 
-        <label for="category">Choose A Category:</label>
-        <select onChange={(event) => { setCategoryChosen(event.target.value) }}>
+        <label htmlFor="category">Choose A Category:</label>
+        <select
+          value={categoryChosen}
+          onChange={(event) => { setCategoryChosen(event.target.value) }}
+        >
           {choreCategories.map(category => {
             return (
               <option
+                key={category.id}
                 value={category.id}>
                 {category.name}
               </option>

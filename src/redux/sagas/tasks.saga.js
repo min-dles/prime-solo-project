@@ -10,6 +10,16 @@ function* fetchTasks(){
     }
 }
 
+function* addTask(action) {
+    try {
+        const result = yield axios.post('/api/task-list', action.payload)
+        yield ({type: 'FETCH_TASKS'})
+    } catch (error) {
+        console.log('error with addTask saga:', error);
+    }
+}
+
 export default function* tasksSaga() {
     yield takeLatest('FETCH_TASKS', fetchTasks);
+    yield takeLatest('ADD_TASK', addTask);
 }

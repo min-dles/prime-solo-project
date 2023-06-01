@@ -22,9 +22,8 @@ function ChoreCategories() {
 			<h3 className="h3-styling">Chore Categories:</h3>
 			{categoriesArray.map(category => {
 				return (
-					<Link to={`/user/categories/${category}`}>
+					<Link key={category} to={`/user/categories/${category}`}>
 						<button
-							key={category}
 							className="btn-styling"
 							disabled={selectedCategory === category}
 						>

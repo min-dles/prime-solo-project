@@ -36,11 +36,10 @@ function CategoriesView() {
                 categoryArray.push(obj);
             }
         }
-        console.log('new array:', categoryArray);
         return categoryArray;
     }
+
     const tasksByCategory = listByCategory(tasks);
-    console.log(tasksByCategory);
 
     return (
         <div className="page-layout">

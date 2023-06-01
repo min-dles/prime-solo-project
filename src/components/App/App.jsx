@@ -56,7 +56,7 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/user/categories">
+          <ProtectedRoute exact path="/user/categories/:selectedCategory">
             <CategoriesView />
           </ProtectedRoute>
 

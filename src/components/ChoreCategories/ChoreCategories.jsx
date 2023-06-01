@@ -1,6 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './ChoreCategories.css';
 
 function ChoreCategories() {
@@ -15,35 +14,23 @@ function ChoreCategories() {
         'Shopping'
     ];
 
-    const dispatch = useDispatch();
-    const history = useHistory();
-    const location = useLocation();
-    const selectedCategory = useSelector(store => store.categories);
-
-    // listen for btn click & update state & dispatch to update global state in Redux store: 
-    const chooseCategory = (categoryName) => {
-        dispatch({
-            type: 'SET_CATEGORY',
-            payload: categoryName
-        });
-        if (location.pathname !== '/user/categories') {
-            history.push('/user/categories');
-        }
-    }
+    let { selectedCategory } = useParams();
 
     return (
         <div className="container chore-categories">
 
-            <h3>Chore Categories:</h3>
+            <h3 className="h3-styling">Chore Categories:</h3>
             {categoriesArray.map(category => {
                 return (
-                    <button
-                        key={category}
-                        onClick={() => chooseCategory(category)}
-                        className="btn-styling"
-                        disabled={selectedCategory === category}>
-                        {category}
-                    </button>
+                    <Link to={`/user/categories/${category}`}>
+                        <button
+                            key={category}
+                            className="btn-styling"
+                            disabled={selectedCategory === category}
+                        >
+                            {category}
+                        </button>
+                    </Link>
                 )
             })}
         </div>

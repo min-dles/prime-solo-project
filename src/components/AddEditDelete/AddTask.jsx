@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 import '../Styling/LoggedIn.css';
 
 // Import Components:
@@ -7,7 +8,6 @@ import Nav from '../Nav/Nav';
 import LunarClock from '../LunarPhase/LunarClock';
 import LunarBtns from '../LunarPhase/LunarBtns';
 import ChoreCategories from '../ChoreCategories/ChoreCategories';
-import userReducer from '../../redux/reducers/user.reducer';
 
 function AddTask() {
   const user = useSelector((store) => store.user);
@@ -84,10 +84,21 @@ function AddTask() {
       user_id: user.id,
       todo_description: taskDescription,
       category_id: categoryChosen,
-      moon_id: moonPhase.id
+      moon_id: moonPhase
     }
 
     console.log('New task being sent to DB:', data);
+
+    axios({
+      method: 'POST',
+      url: '/api/task-list',
+      data: data
+    }).then((response) => {
+      console.log('call went thru:', response);
+      // CLEAR FORMS FUNCTION
+    }).catch((error) =>{
+      console.log('there was an error:', error);
+    })
   }
 
   return (
@@ -129,7 +140,7 @@ function AddTask() {
                 id={phase.id}
                 name="moon_phase"
                 value={phase.phase}
-                onChange={(event) => { setMoonPhase(event.target) }}
+                onChange={(event) => { setMoonPhase(event.target.id) }}
               />
               {phase.phase}
             </label>

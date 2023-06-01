@@ -40,9 +40,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         INSERT INTO "user_todo"
             ("user_id", "todo_description", "category_id", "moon_id")
             VALUES
-            ($1, $2, 2, 8);`;
-    // NOTE: using sample data for first attempt at POST route (chore_category + moon_id)
-    let sqlValues = [req.user.id, newTask.task];
+            ($1, $2, $3, $4);`;
+    let sqlValues = [req.user.id, newTask.todo_description, newTask.category_id, newTask.moon_id];
     pool.query(sqlQuery, sqlValues)
         .then((dbRes) => {
             res.sendStatus(201);

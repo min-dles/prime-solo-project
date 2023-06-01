@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import '../Styling/LoggedIn.css';
 
 // Import Components:
@@ -5,8 +7,13 @@ import Nav from '../Nav/Nav';
 import LunarClock from '../LunarPhase/LunarClock';
 import LunarBtns from '../LunarPhase/LunarBtns';
 import ChoreCategories from '../ChoreCategories/ChoreCategories';
+import userReducer from '../../redux/reducers/user.reducer';
 
 function AddTask() {
+  const user = useSelector((store) => store.user);
+  const [taskDescription, setTaskDescription] = useState('');
+  const [moonPhase, setMoonPhase] = useState('');
+  const [categoryChosen, setCategoryChosen] = useState('');
 
   // make variables for moon phases and chore category arrays:
   const moonPhases = [
@@ -45,13 +52,43 @@ function AddTask() {
   ];
 
   const choreCategories = [
-    'Household',
-    'Cleaning',
-    'Social',
-    'Documents',
-    'Health',
-    'Shopping'
+    {
+      name: 'Household',
+      id: 1
+    },
+    {
+      name: 'Cleaning',
+      id: 2
+    },
+    {
+      name: 'Social',
+      id: 3
+    },
+    {
+      name: 'Documents',
+      id: 4
+    },
+    {
+      name: 'Health',
+      id: 5
+    },
+    {
+      name: 'Shopping',
+      id: 6
+    }
   ];
+
+  const submitAddTask = (event) => {
+    event.preventDefault();
+    const data = {
+      user_id: user.id,
+      todo_description: taskDescription,
+      category_id: categoryChosen,
+      moon_id: moonPhase.id
+    }
+
+    console.log('New task being sent to DB:', data);
+  }
 
   return (
     <div className="page-layout">
@@ -72,9 +109,16 @@ function AddTask() {
         <ChoreCategories />
       </div>
 
-      <form className="page-content">
+      <form className="page-content" onSubmit={submitAddTask}>
         <label for="description">Task Description:</label>
-        <input type="text" id="description" name="description" placeholder="e.g. sweep the garage" />
+        <input
+          type="text"
+          id="description"
+          name="description"
+          placeholder="e.g. sweep the garage"
+          value={taskDescription}
+          onChange={(event) => { setTaskDescription(event.target.value) }}
+        />
 
         <label for="phase">Choose A Moon Phase:</label>
         {moonPhases.map(phase => {
@@ -85,6 +129,7 @@ function AddTask() {
                 id={phase.id}
                 name="moon_phase"
                 value={phase.phase}
+                onChange={(event) => { setMoonPhase(event.target) }}
               />
               {phase.phase}
             </label>
@@ -92,10 +137,13 @@ function AddTask() {
         })}
 
         <label for="category">Choose A Category:</label>
-        <select>
+        <select onChange={(event) => { setCategoryChosen(event.target.value) }}>
           {choreCategories.map(category => {
             return (
-              <option value={category}>{category}</option>
+              <option
+                value={category.id}>
+                {category.name}
+              </option>
             )
           })}
         </select>

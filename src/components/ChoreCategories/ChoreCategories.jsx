@@ -5,15 +5,23 @@ import './ChoreCategories.css';
 function ChoreCategories() {
 
     // make a variable with the chore categories to be easily called/mapped:
-    const categoriesArray = ['Household', 'Cleaning', 'Social', 'Documents', 'Health', 'Shopping'];
+    const categoriesArray = [
+        'Household',
+        'Cleaning',
+        'Social',
+        'Documents',
+        'Health',
+        'Shopping'
+    ];
 
     const dispatch = useDispatch();
-    // default state for the chore categories is empty string:
-    const [choreCategory, setChoreCategory] = useState('');
 
-    // listen for btn click & update state: 
+    // listen for btn click & update state & dispatch to update global state in Redux store: 
     const chooseCategory = (categoryName) => {
-        console.log('This category was clicked:', categoryName);
+        dispatch({
+            type: 'SET_CATEGORY',
+            payload: categoryName
+        })
     }
 
     return (

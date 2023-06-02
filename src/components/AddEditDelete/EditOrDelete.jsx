@@ -22,13 +22,14 @@ function EditOrDelete() {
     }
   }, [dispatch]);
 
+  // When user clicks Delete for a task, it will be removed from DB
   const deleteTask = id => {
     console.log('Delete this task:', id);
     dispatch({
       type: 'DELETE_TASK',
       payload: id
     });
-  };
+  }; // end deleteTask, STRETCH GOAL: want to add confirmation pop-up! 
 
   return (
     <div className="page-layout">

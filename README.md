@@ -11,3 +11,4 @@ Estimated completion - June 2nd 2023
   3. When user submits a task to server, need:
     - To clear form fields/inputs for new entry
     - Dispatch another FETCH_TASKS to DB when user returns to Home or other views 
+    - DELETE: confirmation pop-up

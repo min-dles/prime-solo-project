@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styling/LoggedIn.css';
+import '../Layouts/LoggedIn.css';
 
 // Import Components:
 import Nav from '../Nav/Nav';

@@ -3,7 +3,9 @@ import './LunarPhase.css';
 
 function LunarBtns() {
 
-    return (
+    const lunarBtnsEnabled = true;
+
+    return lunarBtnsEnabled && (
         <div className="moon-btns">
                 <button className="navLink">New Moon</button>
                 <button className="navLink">Waxing Crescent</button>

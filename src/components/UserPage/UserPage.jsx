@@ -1,13 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import '../Styling/LoggedIn.css';
-
-// Import Components:
-import Nav from '../Nav/Nav';
-import LunarClock from '../LunarPhase/LunarClock';
-import LunarBtns from '../LunarPhase/LunarBtns';
-import ChoreCategories from '../ChoreCategories/ChoreCategories';
 
 function UserPage() {
 
@@ -50,43 +43,24 @@ function UserPage() {
   }
 
   return (
-    <div className="page-layout">
-
-      <div className="nav-options">
-        <Nav />
-      </div>
-
-      <div className="lunar-clock">
-        <LunarClock />
-      </div>
-
-      <div className="lunar-btns">
-        <LunarBtns />
-      </div>
-
-      <div className="sidebar">
-        <ChoreCategories />
-      </div>
-
-      <div className="page-content">
-        <h2>Welcome, {user.username}!</h2>
-        <p>Your user ID is: {user.id}</p>
-        <LogOutButton className="btn" />
-        <p>Here are the moon phases right now:</p>
-        <MoonTable />
-        <h3>Your Tasks:</h3>
-        {tasks.map(task => {
-          return (
-            <ul key={task.task_id}>
-              <li> Description: {task.task}
-                <div className="chip">{task.category}</div>
-                <div className="chip">Phase: {task.phase}</div>
-              </li>
-            </ul>
-          )
-        })}
-      </div>
-    </div>
+    <>
+      <h2>Welcome, {user.username}!</h2>
+      <p>Your user ID is: {user.id}</p>
+      <LogOutButton className="btn" />
+      <p>Here are the moon phases right now:</p>
+      <MoonTable />
+      <h3>Your Tasks:</h3>
+      {tasks.map(task => {
+        return (
+          <ul key={task.task_id}>
+            <li> Description: {task.task}
+              <div className="chip">{task.category}</div>
+              <div className="chip">Phase: {task.phase}</div>
+            </li>
+          </ul>
+        )
+      })}
+    </>
   );
 }
 

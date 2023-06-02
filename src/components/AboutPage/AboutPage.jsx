@@ -1,14 +1,19 @@
 import React from 'react';
-import '../Styling/LoggedOut.css';
+import { Moon } from 'lunarphase-js';
+import '../Layouts/LoggedOut';
 import Nav from '../Nav/Nav';
 
 function AboutPage() {
+
+  const phaseEmoji = Moon.lunarPhaseEmoji();
+
   return (
     <div className="page-container">
       <div className="content-background"></div>
-      <div className="content-a">
+      <center className="content-a">
         <p>Use Chore Cycle to sync your recurring tasks with the phases of the moon! Get more in tune with your monthly rituals and the rhythms of nature.</p>
-      </div>
+        <p>{phaseEmoji}</p>
+      </center>
       <div className="content-b">
         <Nav />
       </div>

@@ -21,6 +21,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import UserPage from '../UserPage/UserPage';
 
 import './App.css';
+import LoggedIn from '../Layouts/LoggedIn';
 
 function App() {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ function App() {
             exact
             path="/user"
           >
-            <UserPage />
+              <UserPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/user/categories/:selectedCategory">

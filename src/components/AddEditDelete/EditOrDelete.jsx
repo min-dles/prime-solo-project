@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import '../Styling/LoggedIn.css';
+import '../Layouts/LoggedIn.css';
 
 // Import Components:
 import Nav from '../Nav/Nav';
 import LunarClock from '../LunarPhase/LunarClock';
 import LunarBtns from '../LunarPhase/LunarBtns';
 import ChoreCategories from '../ChoreCategories/ChoreCategories';
+import { choreCategories, moonPhases } from '../../util/constants';
 
 function EditOrDelete() {
 
@@ -16,73 +17,6 @@ function EditOrDelete() {
   const [taskDescription, setTaskDescription] = useState('');
   const [moonPhase, setMoonPhase] = useState(0);
   const [idCurrentlyEditing, setIdCurrentlyEditing] = useState(0);
-
-  // make variables for moon phases and chore category arrays:
-  const moonPhases = [
-    {
-      phase: 'New Moon',
-      id: 1
-    },
-    {
-      phase: 'Waxing Crescent',
-      id: 2
-    },
-    {
-      phase: 'First Quarter',
-      id: 3
-    },
-    {
-      phase: 'Waxing Gibbous',
-      id: 4
-    },
-    {
-      phase: 'Full Moon',
-      id: 5
-    },
-    {
-      phase: 'Waning Gibbous',
-      id: 6
-    },
-    {
-      phase: 'Last Quarter',
-      id: 7
-    },
-    {
-      phase: 'Waning Crescent',
-      id: 8
-    }
-  ];
-
-  const choreCategories = [
-    {
-      name: 'Choose Category',
-      id: 0
-    },
-    {
-      name: 'Household',
-      id: 1
-    },
-    {
-      name: 'Cleaning',
-      id: 2
-    },
-    {
-      name: 'Social',
-      id: 3
-    },
-    {
-      name: 'Documents',
-      id: 4
-    },
-    {
-      name: 'Health',
-      id: 5
-    },
-    {
-      name: 'Shopping',
-      id: 6
-    }
-  ];
 
   // dispatch to store for the tasks list; make sure to call DB only if store is empty:
   useEffect(() => {

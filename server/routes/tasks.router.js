@@ -53,9 +53,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 // PUT route to update tasks (to edit description, moon phase, and/or category)
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    let taskUpdate = req.body.task;
-    let categoryUpdate = req.body.category;
-    let phaseUpdate = req.body.phase;
+    let taskUpdate = req.body.todo_description;
+    let categoryUpdate = req.body.category_id;
+    let phaseUpdate = req.body.moon_id;
     // req.params example: { id: '3' } with id referencing chore id (not user id)
     let idToUpdate = req.params.id;
     let userID = req.user.id;
@@ -65,14 +65,14 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
             WHERE "id"=$4
             AND "user_id"=$5;`;
     let sqlValues = [taskUpdate, categoryUpdate, phaseUpdate, idToUpdate, userID];
-    console.log('req.body:', req.body);
-    // pool.query(sqlQuery, sqlValues)
-    //     .then((dbRes) => {
-    //         res.sendStatus(200);
-    //     }).catch((dbErr) => {
-    //         console.log('error with PUT task-list route:', dbErr);
-    //         res.sendStatus(500);
-    //     })
+    console.log('sqlValues:', sqlValues);
+    pool.query(sqlQuery, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200);
+        }).catch((dbErr) => {
+            console.log('error with PUT task-list route:', dbErr);
+            res.sendStatus(500);
+        })
 })
 
 // DELETE route to completely delete a task from the user_todo table in DB

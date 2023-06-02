@@ -12,3 +12,4 @@ Estimated completion - June 2nd 2023
     - To clear form fields/inputs for new entry
     - Dispatch another FETCH_TASKS to DB when user returns to Home or other views 
     - DELETE: confirmation pop-up
+    - Moon emojis where Phase: # is showing on chips

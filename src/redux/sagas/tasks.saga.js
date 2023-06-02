@@ -31,7 +31,7 @@ function* deleteTask(action) {
 function* updateTask(action) {
 	try {
 		yield axios.put(`/api/task-list/${action.payload.task_id}`, action.payload);
-
+		yield put({type: 'FETCH_TASKS'});
 	} catch (error) {
 		console.log('error with updateTask saga:', error);
 	}

@@ -120,6 +120,9 @@ function EditOrDelete() {
     })
 
     setIdCurrentlyEditing(0);
+    setMoonPhase(0);
+    setCategoryChosen(0);
+    setTaskDescription('');
   }
 
   return (

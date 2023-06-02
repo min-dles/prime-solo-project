@@ -4,6 +4,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import { useSelector } from 'react-redux';
 
 import LoggedIn from '../Layouts/LoggedIn';
+import LoggedOut from '../Layouts/LoggedOut';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
 // Responsible for watching redux state, and returning an appropriate component
@@ -37,7 +38,9 @@ function ProtectedRoute({ component, children, ...props }) {
         </LoggedIn>
         :
         // Otherwise, redirect to the Loginpage
-        <LoginPage />
+        <LoggedOut>
+          <LoginPage />
+        </LoggedOut>
       }
     </Route>
 

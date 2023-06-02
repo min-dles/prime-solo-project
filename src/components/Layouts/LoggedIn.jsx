@@ -1,4 +1,3 @@
-import { Outlet } from 'react-router-dom';
 import './LoggedIn.css';
 
 // Import Components:
@@ -7,7 +6,7 @@ import LunarClock from '../LunarPhase/LunarClock';
 import LunarBtns from '../LunarPhase/LunarBtns';
 import ChoreCategories from '../ChoreCategories/ChoreCategories';
 
-function LoggedIn({ component, children, ...props }) {
+function LoggedIn({ component, children }) {
   const ChildComponent = component || (() => children);
 
   return (

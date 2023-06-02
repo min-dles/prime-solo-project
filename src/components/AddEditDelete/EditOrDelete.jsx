@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Layouts/LoggedIn.css';
-
-// Import Components:
-import Nav from '../Nav/Nav';
-import LunarClock from '../LunarPhase/LunarClock';
-import LunarBtns from '../LunarPhase/LunarBtns';
-import ChoreCategories from '../ChoreCategories/ChoreCategories';
 import { choreCategories, moonPhases } from '../../util/constants';
 
 function EditOrDelete() {
@@ -45,7 +39,7 @@ function EditOrDelete() {
 
     dispatch({
       type: 'UPDATE_TASK',
-      payload : {
+      payload: {
         task_id: idCurrentlyEditing,
         todo_description: taskDescription.length ? taskDescription : currentTask.task,
         category_id: Number(categoryChosen ? categoryChosen : currentTask.category_id),
@@ -60,91 +54,73 @@ function EditOrDelete() {
   }
 
   return (
-    <div className="page-layout">
-
-      <div className="nav-options">
-        <Nav />
-      </div>
-
-      <div className="lunar-clock">
-        <LunarClock />
-      </div>
-
-      <div className="lunar-btns">
-        <LunarBtns />
-      </div>
-
-      <div className="sidebar">
-        <ChoreCategories />
-      </div>
-
-      <div className="page-content">
-        <h3>Your Tasks:</h3>
-        {tasks.map(task => {
-          return (
-            <ul key={task.task_id}>
-              <li>
-                {idCurrentlyEditing != task.task_id ?
-                  <>
-                    <button onClick={() => { setIdCurrentlyEditing(task.task_id) }}>EDIT</button>
+    <>
+      <h3>Your Tasks:</h3>
+      {tasks.map(task => {
+        return (
+          <ul key={task.task_id}>
+            <li>
+              {idCurrentlyEditing != task.task_id ?
+                <>
+                  <button onClick={() => { setIdCurrentlyEditing(task.task_id) }}>EDIT</button>
 
 
-                    {task.task}
-                    <div className="chip">{task.category}</div>
-                    <div className="chip">Phase: {task.phase}</div>
-                    <button
-                      onClick={() => deleteTask(task.task_id)}
-                    >
-                      DELETE
-                    </button>
-                  </>
-                  :
+                  {task.task}
+                  <div className="chip">{task.category}</div>
+                  <div className="chip">Phase: {task.phase}</div>
+                  <button
+                    onClick={() => deleteTask(task.task_id)}
+                  >
+                    DELETE
+                  </button>
+                </>
+                :
 
-                  <form onSubmit={handleSubmit}>
-                    <input
-                      name="description"
-                      value={taskDescription === '' ? task.task : taskDescription}
-                      onChange={(event) => { setTaskDescription(event.target.value) }}
-                    />
-                    <select
-                      value={categoryChosen ? categoryChosen : task.category_id}
-                      onChange={(event) => { setCategoryChosen(event.target.value) }}
-                    >
-                      {choreCategories.map(category => {
-                        return (
-                          <option
-                            key={category.id}
-                            value={category.id}>
-                            {category.name}
-                          </option>
-                        )
-                      })}
-                    </select>
-                    <select
-                      value={moonPhase ? moonPhase : task.phase}
-                      onChange={(event) => { setMoonPhase(event.target.value) }}
-                    >
-                      {moonPhases.map(moon => {
-                        return (
-                          <option
-                            key={moon.id}
-                            value={moon.id}>
-                            {moon.phase}
-                          </option>
-                        )
-                      })}
-                    </select>
-                    <input
-                      type="submit"
-                    />
-                  </form>
-                }
+                <form onSubmit={handleSubmit}>
+                  <input
+                    name="description"
+                    value={taskDescription === '' ? task.task : taskDescription}
+                    onChange={(event) => { setTaskDescription(event.target.value) }}
+                  />
+                  <select
+                    value={categoryChosen ? categoryChosen : task.category_id}
+                    onChange={(event) => { setCategoryChosen(event.target.value) }}
+                  >
+                    {choreCategories.map(category => {
+                      return (
+                        <option
+                          key={category.id}
+                          value={category.id}>
+                          {category.name}
+                        </option>
+                      )
+                    })}
+                  </select>
+                  <select
+                    value={moonPhase ? moonPhase : task.phase}
+                    onChange={(event) => { setMoonPhase(event.target.value) }}
+                  >
+                    {moonPhases.map(moon => {
+                      return (
+                        <option
+                          key={moon.id}
+                          value={moon.id}>
+                          {moon.phase}
+                        </option>
+                      )
+                    })}
+                  </select>
+                  <input
+                    type="submit"
+                  />
+                </form>
+              }
 
-              </li>
-            </ul>
-          )
-        })}
-      </div></div>
+            </li>
+          </ul>
+        )
+      })}
+    </>
   )
 }
 

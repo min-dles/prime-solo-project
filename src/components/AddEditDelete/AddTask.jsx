@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Layouts/LoggedIn.css';
-
-// Import Components:
-import Nav from '../Nav/Nav';
-import LunarClock from '../LunarPhase/LunarClock';
-import LunarBtns from '../LunarPhase/LunarBtns';
-import ChoreCategories from '../ChoreCategories/ChoreCategories';
 import { choreCategories, moonPhases } from '../../util/constants';
 
 function AddTask() {
@@ -46,25 +40,8 @@ function AddTask() {
   }
 
   return (
-    <div className="page-layout">
-
-      <div className="nav-options">
-        <Nav />
-      </div>
-
-      <div className="lunar-clock">
-        <LunarClock />
-      </div>
-
-      <div className="lunar-btns">
-        <LunarBtns />
-      </div>
-
-      <div className="sidebar">
-        <ChoreCategories />
-      </div>
-
-      <form className="page-content" onSubmit={submitAddTask}>
+    <>
+      <form onSubmit={submitAddTask}>
         <label htmlFor="description">Task Description:</label>
         <input
           type="text"
@@ -108,7 +85,7 @@ function AddTask() {
         </select>
         <button>ADD TASK</button>
       </form>
-    </div>
+    </>
   )
 }
 

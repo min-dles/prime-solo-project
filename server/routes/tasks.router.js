@@ -15,6 +15,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             user_todo.user_id, 
             user_todo.todo_description AS "task", 
             user_todo.moon_id AS "phase", 
+            chore_categories.id AS "category_id", 
             chore_categories.category AS "category" 
         FROM "user_todo"
         JOIN "chore_categories" 

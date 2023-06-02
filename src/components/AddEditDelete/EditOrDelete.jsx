@@ -102,8 +102,8 @@ function EditOrDelete() {
     });
   }; // end deleteTask, STRETCH GOAL: want to add confirmation pop-up! 
 
-  // handle Update tasks:
-  const updateTask = (event) => {
+  // handle submit to Update tasks:
+  const handleSubmit = (event) => {
     console.log('Update task ID is:', idCurrentlyEditing);
     event.preventDefault();
     let payload = {
@@ -114,15 +114,21 @@ function EditOrDelete() {
       payload.todo_description = taskDescription
     }
 
-    if (categoryChosen != 0) {
+    if (categoryChosen) {
       payload.category_id = categoryChosen
     }
 
-    if (moonPhase != 0) {
+    if (moonPhase) {
       payload.moon_id = moonPhase
     }
 
-    console.log('This is your payload:', payload)
+    if (taskDescription.length || categoryChosen || moonPhase) {
+      dispatch({
+        type: 'UPDATE_TASK',
+        payload
+      })
+    }
+
     setIdCurrentlyEditing(0);
   }
 
@@ -167,7 +173,7 @@ function EditOrDelete() {
                   </>
                   :
 
-                  <form onSubmit={updateTask}>
+                  <form onSubmit={handleSubmit}>
                     <input
                       name="description"
                       value={taskDescription === '' ? task.task : taskDescription}

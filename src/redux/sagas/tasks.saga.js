@@ -28,8 +28,13 @@ function* deleteTask(action) {
 	}
 }
 
+function* updateTask(action) {
+	console.log('task being updated:', action.payload);
+}
+
 export default function* tasksSaga() {
 	yield takeLatest('FETCH_TASKS', fetchTasks);
 	yield takeLatest('ADD_TASK', addTask);
 	yield takeLatest('DELETE_TASK', deleteTask);
+	yield takeLatest('UPDATE_TASK', updateTask);
 }

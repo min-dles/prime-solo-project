@@ -22,6 +22,10 @@ function EditOrDelete() {
     }
   }, [dispatch]);
 
+  const deleteTask = id => {
+    console.log('Delete this task:', id);
+  }
+
   return (
     <div className="page-layout">
 
@@ -51,7 +55,11 @@ function EditOrDelete() {
                 {task.task}
                 <div className="chip">{task.category}</div>
                 <div className="chip">Phase: {task.phase}</div>
-                <button>DELETE</button>
+                <button
+                  onClick={() => deleteTask(task.task_id)}
+                >
+                  DELETE
+                </button>
               </li>
             </ul>
           )

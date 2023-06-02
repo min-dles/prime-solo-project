@@ -106,28 +106,18 @@ function EditOrDelete() {
   const handleSubmit = (event) => {
     console.log('Update task ID is:', idCurrentlyEditing);
     event.preventDefault();
-    let payload = {
-      task_id: idCurrentlyEditing
-    }
+    // Need to find current task ID in the array of tasks (from store) 
+    const currentTask = tasks.find(task => task.task_id === idCurrentlyEditing);
 
-    if (taskDescription.length) {
-      payload.todo_description = taskDescription
-    }
-
-    if (categoryChosen) {
-      payload.category_id = categoryChosen
-    }
-
-    if (moonPhase) {
-      payload.moon_id = moonPhase
-    }
-
-    if (taskDescription.length || categoryChosen || moonPhase) {
-      dispatch({
-        type: 'UPDATE_TASK',
-        payload
-      })
-    }
+    dispatch({
+      type: 'UPDATE_TASK',
+      payload : {
+        task_id: idCurrentlyEditing,
+        todo_description: taskDescription.length ? taskDescription : currentTask.task,
+        category_id: Number(categoryChosen ? categoryChosen : currentTask.category_id),
+        moon_id: Number(moonPhase ? moonPhase : currentTask.phase)
+      }
+    })
 
     setIdCurrentlyEditing(0);
   }
@@ -180,7 +170,7 @@ function EditOrDelete() {
                       onChange={(event) => { setTaskDescription(event.target.value) }}
                     />
                     <select
-                      value={task.category_id}
+                      value={categoryChosen ? categoryChosen : task.category_id}
                       onChange={(event) => { setCategoryChosen(event.target.value) }}
                     >
                       {choreCategories.map(category => {
@@ -194,7 +184,7 @@ function EditOrDelete() {
                       })}
                     </select>
                     <select
-                      value={task.phase}
+                      value={moonPhase ? moonPhase : task.phase}
                       onChange={(event) => { setMoonPhase(event.target.value) }}
                     >
                       {moonPhases.map(moon => {

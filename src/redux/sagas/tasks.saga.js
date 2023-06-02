@@ -29,7 +29,12 @@ function* deleteTask(action) {
 }
 
 function* updateTask(action) {
-	console.log('task being updated:', action.payload);
+	try {
+		yield axios.put(`/api/task-list/${action.payload.task_id}`, action.payload);
+
+	} catch (error) {
+		console.log('error with updateTask saga:', error);
+	}
 }
 
 export default function* tasksSaga() {

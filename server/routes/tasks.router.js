@@ -65,13 +65,14 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
             WHERE "id"=$4
             AND "user_id"=$5;`;
     let sqlValues = [taskUpdate, categoryUpdate, phaseUpdate, idToUpdate, userID];
-    pool.query(sqlQuery, sqlValues)
-        .then((dbRes) => {
-            res.sendStatus(200);
-        }).catch((dbErr) => {
-            console.log('error with PUT task-list route:', dbErr);
-            res.sendStatus(500);
-        })
+    console.log('req.body:', req.body);
+    // pool.query(sqlQuery, sqlValues)
+    //     .then((dbRes) => {
+    //         res.sendStatus(200);
+    //     }).catch((dbErr) => {
+    //         console.log('error with PUT task-list route:', dbErr);
+    //         res.sendStatus(500);
+    //     })
 })
 
 // DELETE route to completely delete a task from the user_todo table in DB

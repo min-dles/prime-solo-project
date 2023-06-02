@@ -24,7 +24,11 @@ function EditOrDelete() {
 
   const deleteTask = id => {
     console.log('Delete this task:', id);
-  }
+    dispatch({
+      type: 'DELETE_TASK',
+      payload: id
+    });
+  };
 
   return (
     <div className="page-layout">

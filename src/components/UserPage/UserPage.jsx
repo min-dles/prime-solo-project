@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
+import LogOutButton from '../LogOutButton/LogOutButton';
 import '../Styling/LoggedIn.css';
 
 // Import Components:
@@ -12,9 +12,18 @@ import ChoreCategories from '../ChoreCategories/ChoreCategories';
 function UserPage() {
 
   const dispatch = useDispatch();
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const moonPhase = useSelector((store) => store.moonPhases);
+  const tasks = useSelector((store) => store.tasks);
+
+  // dispatch to store for the tasks list; make sure to call DB only if store is empty:
+  useEffect(() => {
+    if (!tasks.length) {
+      dispatch({
+        type: 'FETCH_TASKS'
+      });
+    }
+  }, [dispatch]);
 
   // first check if there is already moonPhase object in the store.
   // If not, dispatch to make Astronomy API call for that data. 
@@ -61,10 +70,21 @@ function UserPage() {
 
       <div className="page-content">
         <h2>Welcome, {user.username}!</h2>
-        <p>Your ID is: {user.id}</p>
+        <p>Your user ID is: {user.id}</p>
+        <LogOutButton className="btn" />
         <p>Here are the moon phases right now:</p>
         <MoonTable />
-        <LogOutButton className="btn" />
+        <h3>Your Tasks:</h3>
+        {tasks.map(task => {
+          return (
+            <ul key={task.task_id}>
+              <li> Description: {task.task}
+                <div className="chip">{task.category}</div>
+                <div className="chip">Phase: {task.phase}</div>
+              </li>
+            </ul>
+          )
+        })}
       </div>
     </div>
   );

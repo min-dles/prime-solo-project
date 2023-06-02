@@ -4,3 +4,12 @@ Chore Cycle is an opportunity to sync your chore list with the moon phases so yo
 
 ## UNDER CONSTRUCTION: 
 Estimated completion - June 2nd 2023
+
+## STRETCH GOAL(S)
+1. useParams for identifying the Moon Phase ID when user clicks on a Moon Phase button and wants to see only task items with that Moon Phase ID. 
+2. Refactoring for logged in/out template views: react-router layout components
+  3. When user submits a task to server, need:
+    - To clear form fields/inputs for new entry
+    - Dispatch another FETCH_TASKS to DB when user returns to Home or other views 
+    - DELETE: confirmation pop-up
+    - Moon emojis where Phase: # is showing on chips

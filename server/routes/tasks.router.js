@@ -11,7 +11,15 @@ const pool = require('../modules/pool');
 // GET route for (authenticated/logged in) user's tasks: 
 router.get('/', rejectUnauthenticated, (req, res) => {
     let sqlQuery = `
-        SELECT * FROM "user_todo"
+        SELECT user_todo.id AS "task_id", 
+            user_todo.user_id, 
+            user_todo.todo_description AS "task", 
+            user_todo.moon_id AS "phase", 
+            chore_categories.id AS "category_id", 
+            chore_categories.category AS "category" 
+        FROM "user_todo"
+        JOIN "chore_categories" 
+            ON user_todo.category_id=chore_categories.id
         WHERE "user_id"=($1);`;
 
     let sqlValues = [req.user.id];
@@ -33,9 +41,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         INSERT INTO "user_todo"
             ("user_id", "todo_description", "category_id", "moon_id")
             VALUES
-            ($1, $2, 2, 8);`;
-    // NOTE: using sample data for first attempt at POST route (chore_category + moon_id)
-    let sqlValues = [req.user.id, newTask.task];
+            ($1, $2, $3, $4);`;
+    let sqlValues = [req.user.id, newTask.todo_description, newTask.category_id, newTask.moon_id];
     pool.query(sqlQuery, sqlValues)
         .then((dbRes) => {
             res.sendStatus(201);
@@ -46,9 +53,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 // PUT route to update tasks (to edit description, moon phase, and/or category)
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-    let taskUpdate = req.body.task;
-    let categoryUpdate = req.body.category;
-    let phaseUpdate = req.body.phase;
+    let taskUpdate = req.body.todo_description;
+    let categoryUpdate = req.body.category_id;
+    let phaseUpdate = req.body.moon_id;
     // req.params example: { id: '3' } with id referencing chore id (not user id)
     let idToUpdate = req.params.id;
     let userID = req.user.id;
@@ -58,6 +65,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
             WHERE "id"=$4
             AND "user_id"=$5;`;
     let sqlValues = [taskUpdate, categoryUpdate, phaseUpdate, idToUpdate, userID];
+    console.log('sqlValues:', sqlValues);
     pool.query(sqlQuery, sqlValues)
         .then((dbRes) => {
             res.sendStatus(200);

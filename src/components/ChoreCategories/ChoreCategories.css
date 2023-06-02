@@ -9,15 +9,21 @@
     background-color: #000000;
 }
 
+.h3-styling,
 .btn-styling {
     color: rgb(238, 238, 238);
     background-color: #000000;
     text-align: center;
+    width: 100%;
+}
+
+.btn-styling {
     padding: 24px 10px;
     text-decoration: none;
     font-size: 15px;
 }
 
-.btn-styling:hover {
+.btn-styling:hover,
+.btn-styling:disabled {
     background-color: rgb(156, 156, 156);
   }

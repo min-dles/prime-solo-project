@@ -11,11 +11,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
+import AddTask from '../AddEditDelete/AddTask';
+import CategoriesView from '../ChoreCategories/CategoriesView';
+import EditOrDelete from '../AddEditDelete/EditOrDelete';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import UserPage from '../UserPage/UserPage';
 
 import './App.css';
 
@@ -53,6 +56,18 @@ function App() {
             path="/user"
           >
             <UserPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/user/categories/:selectedCategory">
+            <CategoriesView />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/user/add-task">
+            <AddTask />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/user/edit-delete">
+            <EditOrDelete />
           </ProtectedRoute>
 
           <ProtectedRoute

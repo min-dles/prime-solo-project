@@ -28,10 +28,10 @@ function LandingPage() {
       
       <div className="grid">
         <div className="grid-col grid-col_8">
-          <div class="first-quarter moon"></div>
-          <div class="new moon"></div>
-          <div class="full moon"></div>
-          <div class="third-quarter moon"></div>
+          <div className="first-quarter moon"></div>
+          <div className="new moon"></div>
+          <div className="full moon"></div>
+          <div className="third-quarter moon"></div>
 
 
         </div>

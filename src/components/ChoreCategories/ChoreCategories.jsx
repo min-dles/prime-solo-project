@@ -1,22 +1,39 @@
 import React from 'react';
+import { Link, useParams } from 'react-router-dom';
 import './ChoreCategories.css';
 
 function ChoreCategories() {
 
-    return (
-        <div className="container chore-categories">
+	// make a variable with the chore categories to be easily called/mapped:
+	const categoriesArray = [
+		'Household',
+		'Cleaning',
+		'Social',
+		'Documents',
+		'Health',
+		'Shopping'
+	];
 
-            <h3>Chore Categories:</h3>
+	let { selectedCategory } = useParams();
 
-            <button className="btn-styling">Household</button>
-            <button className="btn-styling">Cleaning</button>
-            <button className="btn-styling">Social</button>
-            <button className="btn-styling">Documents</button>
-            <button className="btn-styling">Health</button>
-            <button className="btn-styling">Shopping</button>
-            
-        </div>
-    )
+	return (
+		<div className="container chore-categories">
+
+			<h3 className="h3-styling">Chore Categories:</h3>
+			{categoriesArray.map(category => {
+				return (
+					<Link key={category} to={`/user/categories/${category}`}>
+						<button
+							className="btn-styling"
+							disabled={selectedCategory === category}
+						>
+							{category}
+						</button>
+					</Link>
+				)
+			})}
+		</div>
+	)
 }
 
 export default ChoreCategories;

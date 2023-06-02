@@ -13,7 +13,9 @@ function EditOrDelete() {
   const dispatch = useDispatch();
   const tasks = useSelector((store) => store.tasks);
   const [categoryChosen, setCategoryChosen] = useState(0);
-  const [editMode, setEditMode] = useState(0);
+  const [taskDescription, setTaskDescription] = useState('');
+  const [moonPhase, setMoonPhase] = useState(0);
+  const [idCurrentlyEditing, setIdCurrentlyEditing] = useState(0);
 
   // make variables for moon phases and chore category arrays:
   const moonPhases = [
@@ -102,9 +104,26 @@ function EditOrDelete() {
 
   // handle Update tasks:
   const updateTask = (event) => {
-    console.log('Update task ID is:', editMode);
+    console.log('Update task ID is:', idCurrentlyEditing);
     event.preventDefault();
-    setEditMode(0);
+    let payload = {
+      task_id: idCurrentlyEditing
+    }
+
+    if (taskDescription.length) {
+      payload.todo_description = taskDescription
+    }
+
+    if (categoryChosen != 0) {
+      payload.category_id = categoryChosen
+    }
+
+    if (moonPhase != 0) {
+      payload.moon_id = moonPhase
+    }
+
+    console.log('This is your payload:', payload)
+    setIdCurrentlyEditing(0);
   }
 
   return (
@@ -132,9 +151,9 @@ function EditOrDelete() {
           return (
             <ul key={task.task_id}>
               <li>
-                {editMode != task.task_id ?
+                {idCurrentlyEditing != task.task_id ?
                   <>
-                    <button onClick={() => { setEditMode(task.task_id) }}>EDIT</button>
+                    <button onClick={() => { setIdCurrentlyEditing(task.task_id) }}>EDIT</button>
 
 
                     {task.task}
@@ -151,7 +170,7 @@ function EditOrDelete() {
                   <form onSubmit={updateTask}>
                     <input
                       name="description"
-                      value={task.task}
+                      value={taskDescription === '' ? task.task : taskDescription}
                       onChange={(event) => { setTaskDescription(event.target.value) }}
                     />
                     <select
@@ -168,8 +187,22 @@ function EditOrDelete() {
                         )
                       })}
                     </select>
+                    <select
+                      value={task.phase}
+                      onChange={(event) => { setMoonPhase(event.target.value) }}
+                    >
+                      {moonPhases.map(moon => {
+                        return (
+                          <option
+                            key={moon.id}
+                            value={moon.id}>
+                            {moon.phase}
+                          </option>
+                        )
+                      })}
+                    </select>
                     <input
-                      type="submit" 
+                      type="submit"
                     />
                   </form>
                 }

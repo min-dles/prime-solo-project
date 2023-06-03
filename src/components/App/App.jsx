@@ -17,6 +17,7 @@ import EditOrDelete from '../AddEditDelete/EditOrDelete';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
+import LunarPhaseView from '../LunarPhase/LunarPhaseView';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import UserPage from '../UserPage/UserPage';
 
@@ -69,6 +70,10 @@ function App() {
 
         <ProtectedRoute exact path="/user/categories/:selectedCategory">
           <CategoriesView />
+        </ProtectedRoute>
+
+        <ProtectedRoute exact path="/user/phase/:selectedPhase">
+          <LunarPhaseView />
         </ProtectedRoute>
 
         <ProtectedRoute exact path="/user/add-task">

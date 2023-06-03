@@ -1,7 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import LoginPage from '../LoginPage/LoginPage';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import LoggedIn from '../Layouts/LoggedIn';
+import LoggedOut from '../Layouts/LoggedOut';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
 // Responsible for watching redux state, and returning an appropriate component
@@ -23,16 +26,21 @@ function ProtectedRoute({ component, children, ...props }) {
   // We return a Route component that gets added to our list of routes
   return (
     <Route
+      // passing element for LoggedIn template view to all protected Routes:
       // all props like 'exact' and 'path' that were passed in
       // are now passed along to the 'Route' Component
       {...props}
     >
       {user.id ?
         // If the user is logged in, show the protected component
-        <ProtectedComponent />
+        <LoggedIn>
+          <ProtectedComponent />
+        </LoggedIn>
         :
         // Otherwise, redirect to the Loginpage
-        <LoginPage />
+        <LoggedOut>
+          <LoginPage />
+        </LoggedOut>
       }
     </Route>
 

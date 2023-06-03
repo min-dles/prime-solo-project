@@ -19,8 +19,7 @@ overall themes of this app: */
 
 html,
 body,
-#react-root,
-.page-layout {
+#react-root {
   height: 100%;
 }
 

@@ -24,7 +24,7 @@ function ChoreCategories() {
 				return (
 					<Link key={category} to={`/user/categories/${category}`}>
 						<button
-							className="btn-styling"
+							className="btn-styling navLink"
 							disabled={selectedCategory === category}
 						>
 							{category}

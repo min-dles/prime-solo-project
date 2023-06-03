@@ -1,13 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import '../Styling/LoggedIn.css';
-
-// Import Components:
-import Nav from '../Nav/Nav';
-import LunarClock from '../LunarPhase/LunarClock';
-import LunarBtns from '../LunarPhase/LunarBtns';
-import ChoreCategories from '../ChoreCategories/ChoreCategories';
+import '../Layouts/LoggedIn.css';
 
 // STEPS: 
 // 1. Need to access store for user's task list 
@@ -43,44 +37,25 @@ function CategoriesView() {
 	const tasksByCategory = listByCategory(tasks);
 
 	return (
-		<div className="page-layout">
+		<>
+			<h3>{selectedCategory} Category:</h3>
 
-			<div className="nav-options">
-				<Nav />
-			</div>
-
-			<div className="lunar-clock">
-				<LunarClock />
-			</div>
-
-			<div className="lunar-btns">
-				<LunarBtns />
-			</div>
-
-			<div className="sidebar">
-				<ChoreCategories />
-			</div>
-
-			<div className="page-content">
-				<h3>{selectedCategory} Category:</h3>
-
-				{
-					tasksByCategory.length ? tasksByCategory.map(task => {
-						return (
-							<ul key={task.task_id}>
-								<li>Description: {task.task}
-									<div className="chip">Phase: {task.phase}</div>
-								</li>
-							</ul>
-						)
-					}) : (
-						<p>
-							There is nothing here.
-						</p>
+			{
+				tasksByCategory.length ? tasksByCategory.map(task => {
+					return (
+						<ul key={task.task_id}>
+							<li>Description: {task.task}
+								<div className="chip">Phase: {task.phase}</div>
+							</li>
+						</ul>
 					)
-				}
-			</div>
-		</div>
+				}) : (
+					<p>
+						There is nothing here.
+					</p>
+				)
+			}
+		</>
 	)
 }
 

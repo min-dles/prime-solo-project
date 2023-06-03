@@ -15,8 +15,8 @@ function Nav() {
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
+          // If there's no user, show login/registration links which will redirect user to Home landing page 
+          <Link className="navLink" to="/home">
             Login / Register
           </Link>
         )}

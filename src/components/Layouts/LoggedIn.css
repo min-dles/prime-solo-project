@@ -9,13 +9,12 @@
     display: grid;
     width: 100vw;
     height: 100vh;
-    grid-template-columns: [start-one] 200px [two] 1fr [three] 1fr [end-four];
-    grid-template-rows: [row1-start] 80px [row2] 200px [row3] 1fr [row4] 1fr [row5-end];
+    grid-template-columns: [start-one] 200px [two] 1fr [end-three];
+    grid-template-rows: [start-one] 80px [two] 200px [three] 1fr [end-four];
     grid-template-areas:
-    "lunar-clock navbar navbar"
-    "lunar-clock lunar-btns lunar-btns"
-    "sidebar page-content page-content"
-    "sidebar page-content page-content";
+        "lunar-clock navbar"
+        "lunar-clock lunar-btns"
+        "sidebar page-content";
 }
 
 .nav-options {
@@ -36,14 +35,16 @@
 
 .sidebar {
     grid-area: sidebar;
-    height: 100vh;
+    max-height: 100%;
+    overflow: auto;
 }
 
 .page-content {
     background-color: white;
     grid-area: page-content;
-    padding-left: 30px;
-    padding-top: 30px;
+    padding: 20px 40px;
+    max-height: 100%;
+    overflow: auto;
 }
 
 

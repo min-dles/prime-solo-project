@@ -45,14 +45,14 @@ function App() {
           exact
           path="/about"
         >
-          { user.id ? 
+          {user.id ?
             <LoggedIn>
               <AboutPage />
             </LoggedIn>
             :
-          <LoggedOut>
-            <AboutPage />
-          </LoggedOut> }
+            <LoggedOut>
+              <AboutPage />
+            </LoggedOut>}
         </Route>
 
         {/* For protected routes, the view could show one of several things on the same route.
@@ -125,7 +125,9 @@ function App() {
             <Redirect to="/user" />
             :
             // Otherwise, show the Landing page
-            <LandingPage />
+            <LoggedOut>
+              <LandingPage />
+            </LoggedOut>
           }
         </Route>
 

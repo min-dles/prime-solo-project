@@ -45,11 +45,7 @@ function UserPage() {
   return (
     <>
       <h2>Welcome, {user.username}!</h2>
-      <p>Your user ID is: {user.id}</p>
-      <LogOutButton className="btn" />
-      <p>Here are the moon phases right now:</p>
-      <MoonTable />
-      <h3>Your Tasks:</h3>
+      <h3>Here are your Tasks:</h3>
       {tasks.map(task => {
         return (
           <ul key={task.task_id}>

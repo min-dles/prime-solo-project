@@ -63,17 +63,32 @@ function UserPage() {
       index === position ? !task : task);
 
     setChecked(updatedTaskStatus);
-    console.log('currently checked?', updatedTaskStatus);
+    let taskCompletionID = tasks[position].task_id;
+    let a = updatedTaskStatus[position];
+    // let completionStatusChange = tasks[position].completion_status;
+    // completionStatusChange = updatedTaskStatus[position];
+    // console.log('need to see what is happening here:', taskCompletionID, completionStatusChange)
+
+    dispatch({
+      type: 'COMPLETE_TASK',
+      payload: {
+        task_id: taskCompletionID,
+        completion_status: a
+      }
+    })
+    // console.log('checking status here!', tasks[position].completion_status, updatedTaskStatus[position]);
+
+
+    // console.log('currently checked?', updatedTaskStatus);
     // const taskCompletionStatus = updatedTaskStatus.reduce(
     //   (currentState, index) => {
     //     if (currentState === true) {
-    //       currentState = false;
-    //       return currentState;
+    //       return true;
     //     }
-    //     currentState = true;
-    //     return currentState;
+    //     return false;
     //   }
-    // )
+    // );
+    // console.log('another check, okay?', taskCompletionStatus);
     // event.preventDefault();
     // setChecked(!checked);
     // console.log('status of checked:', checked);
@@ -87,7 +102,7 @@ function UserPage() {
     <>
       <h2>Welcome, {user.username}!</h2>
       <h3>Here are your Tasks:</h3>
-      {tasks.map(({ task, phase, category }, index) => {
+      {tasks.map(({ task, task_id, phase, category, completion_status }, index) => {
         return (
           <ul key={index}>
             <label>

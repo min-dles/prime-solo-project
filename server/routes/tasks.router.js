@@ -83,11 +83,17 @@ router.put('/status/:id', rejectUnauthenticated, (req, res) => {
     let userID = req.user.id;
     let sqlQuery = `
         UPDATE "user_todo"
-            SET ("completion_status")=($1)
+            SET "completion_status"=$1
             WHERE "id"=$2
             AND "user_id"=$3;`;
     let sqlValues = [taskStatus, taskID, userID];
-    console.log('sqlValues:', sqlValues);
+    pool.query(sqlQuery, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200);
+        }).catch((dbErr) => {
+            console.log('error in PUT route for completion status:', dbErr);
+            res.sendStatus(500);
+        })
 })
 
 // DELETE route to completely delete a task from the user_todo table in DB

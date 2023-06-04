@@ -64,7 +64,7 @@ function UserPage() {
 
     setChecked(updatedTaskStatus);
     let taskCompletionID = tasks[position].task_id;
-    let a = updatedTaskStatus[position];
+    let taskCompletionBool = updatedTaskStatus[position];
     // let completionStatusChange = tasks[position].completion_status;
     // completionStatusChange = updatedTaskStatus[position];
     // console.log('need to see what is happening here:', taskCompletionID, completionStatusChange)
@@ -73,7 +73,7 @@ function UserPage() {
       type: 'COMPLETE_TASK',
       payload: {
         task_id: taskCompletionID,
-        completion_status: a
+        completion_status: taskCompletionBool
       }
     })
     // console.log('checking status here!', tasks[position].completion_status, updatedTaskStatus[position]);

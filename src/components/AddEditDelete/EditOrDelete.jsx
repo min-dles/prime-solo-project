@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Layouts/LoggedIn.css';
+import './AddEditDelete.css';
 import { choreCategories, moonPhases } from '../../util/constants';
 import { Moon } from 'lunarphase-js';
 
@@ -65,19 +66,25 @@ function EditOrDelete() {
 
   return (
     <>
-      <h3>Your Tasks:</h3>
+      <h3 className="custom-h3">Your Tasks:</h3>
       {tasks.map(task => {
         return (
           <ul key={task.task_id}>
             <li>
               {idCurrentlyEditing != task.task_id ?
                 <>
-                  <button onClick={() => { setIdCurrentlyEditing(task.task_id) }}>EDIT</button>
+                  <button
+                    className="edit-delete"
+                    onClick={() => { setIdCurrentlyEditing(task.task_id) }}
+                  >
+                    EDIT
+                  </button>
 
                   {task.task}
                   <div className="category chip">{task.category}</div>
                   <div className="moon-phase chip">Phase: {getEmojiFromMoonId(task.phase)}</div>
                   <button
+                    className="edit-delete delete-only"
                     onClick={() => deleteTask(task.task_id)}
                   >
                     DELETE
@@ -87,11 +94,13 @@ function EditOrDelete() {
 
                 <form onSubmit={handleSubmit}>
                   <input
+                    className="edit-fields-styling"
                     name="description"
                     value={taskDescription === '' ? task.task : taskDescription}
                     onChange={(event) => { setTaskDescription(event.target.value) }}
                   />
                   <select
+                    className="edit-fields-styling"
                     value={categoryChosen ? categoryChosen : task.category_id}
                     onChange={(event) => { setCategoryChosen(event.target.value) }}
                   >
@@ -106,6 +115,7 @@ function EditOrDelete() {
                     })}
                   </select>
                   <select
+                    className="edit-fields-styling"
                     value={moonPhase ? moonPhase : task.phase}
                     onChange={(event) => { setMoonPhase(event.target.value) }}
                   >
@@ -120,6 +130,7 @@ function EditOrDelete() {
                     })}
                   </select>
                   <input
+                  className="edit-delete"
                     type="submit"
                   />
                 </form>

@@ -76,9 +76,11 @@ function UserPage() {
         {tasks.map(({ task, task_id, phase, category, completion_status
         }) => {
           return (
-            <li key={task_id}>
+            <li 
+            key={task_id}
+            className={completion_status ? "completed-task" : "uncompleted-task"}
+            >
               <label>
-                <div className={completion_status ? "completed-task" : "uncompleted-task"}>
                   <input
                     type="checkbox"
                     id={`custom-checkbox=${task_id}`}
@@ -88,7 +90,6 @@ function UserPage() {
                   {task}
                   <div className="category chip">{category}</div>
                   <div className="moon-phase chip">Phase: {getEmojiFromMoonId(phase)}</div>
-                </div>
               </label>
             </li>
           )

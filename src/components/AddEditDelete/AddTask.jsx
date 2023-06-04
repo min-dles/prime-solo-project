@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Layouts/LoggedIn.css';
+import './AddEditDelete.css';
 import { choreCategories, moonPhases } from '../../util/constants';
 import { Moon } from 'lunarphase-js';
 
@@ -51,9 +52,15 @@ function AddTask() {
 
   return (
     <>
-      <form onSubmit={submitAddTask}>
-        <label htmlFor="description">Task Description:</label>
+      <form className="form-container" onSubmit={submitAddTask}>
+        <label
+          htmlFor="description"
+          className="form-labels"
+        >
+          Task Description:
+        </label>
         <input
+          className="input-fields-styling"
           type="text"
           id="description"
           name="description"
@@ -62,25 +69,40 @@ function AddTask() {
           onChange={(event) => { setTaskDescription(event.target.value) }}
         />
 
-        <label htmlFor="phase">Choose A Moon Phase:</label>
+        <label
+          htmlFor="phase"
+          className="form-labels"
+        >
+          Choose A Moon Phase:
+        </label>
         {moonPhases.map(phase => {
           return (
-            <label key={phase.id}>
+            <label 
+            key={phase.id}
+            className="radios-text"
+            >
               <input
+                className="radios-styling"
                 type="radio"
                 id={phase.id}
                 name="moon_phase"
                 value={phase.phase}
                 onChange={(event) => { setMoonPhase(event.target.id) }}
               />
-              {phase.phase}: 
+              {phase.phase}:
               {getEmojiFromMoonId(phase.id)}
             </label>
           )
         })}
 
-        <label htmlFor="category">Choose A Category:</label>
+        <label
+          htmlFor="category"
+          className="form-labels"
+        >
+          Choose A Category:
+        </label>
         <select
+          className="input-fields-styling"
           value={categoryChosen}
           onChange={(event) => { setCategoryChosen(event.target.value) }}
         >
@@ -94,7 +116,11 @@ function AddTask() {
             )
           })}
         </select>
-        <button>ADD TASK</button>
+        <button
+          className="btns"
+        >
+          ADD TASK
+        </button>
       </form>
     </>
   )

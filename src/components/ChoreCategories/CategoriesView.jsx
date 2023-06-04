@@ -40,7 +40,7 @@ function CategoriesView() {
       }
     }
   }
-	
+
 	return (
 		<>
 			<h3>{selectedCategory} Category:</h3>
@@ -50,7 +50,7 @@ function CategoriesView() {
 					return (
 						<ul key={task.task_id}>
 							<li>Description: {task.task}
-								<div className="chip">Phase: {getEmojiFromMoonId(task.phase)}</div>
+								<div className="moon-phase chip">Phase: {getEmojiFromMoonId(task.phase)}</div>
 							</li>
 						</ul>
 					)

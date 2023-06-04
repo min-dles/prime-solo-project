@@ -75,8 +75,8 @@ function EditOrDelete() {
                   <button onClick={() => { setIdCurrentlyEditing(task.task_id) }}>EDIT</button>
 
                   {task.task}
-                  <div className="chip">{task.category}</div>
-                  <div className="chip">Phase: {getEmojiFromMoonId(task.phase)}</div>
+                  <div className="category chip">{task.category}</div>
+                  <div className="moon-phase chip">Phase: {getEmojiFromMoonId(task.phase)}</div>
                   <button
                     onClick={() => deleteTask(task.task_id)}
                   >

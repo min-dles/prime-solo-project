@@ -46,6 +46,7 @@ CREATE TABLE "user_todo" (
 	"todo_description" VARCHAR (250) DEFAULT NULL,
 	"category_id" INT,
 	"moon_id" INT,
+	"completion_status" boolean DEFAULT FALSE,
 	CONSTRAINT fk_user 
 		FOREIGN KEY(user_id)
 			REFERENCES "user"(id)

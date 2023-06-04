@@ -37,9 +37,19 @@ function* updateTask(action) {
 	}
 }
 
+function* completeTask(action) {
+	try { 
+		yield axios.put(`/api/task-list/status/${action.payload.task_id}`, action.payload);
+		yield put({type: 'FETCH_TASKS'});
+	} catch (error) {
+		console.log('error in saga:', error);
+	}
+}
+
 export default function* tasksSaga() {
 	yield takeLatest('FETCH_TASKS', fetchTasks);
 	yield takeLatest('ADD_TASK', addTask);
 	yield takeLatest('DELETE_TASK', deleteTask);
 	yield takeLatest('UPDATE_TASK', updateTask);
+	yield takeLatest('COMPLETE_TASK', completeTask);
 }

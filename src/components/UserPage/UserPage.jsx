@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Moon, LunarPhase } from 'lunarphase-js';
+import { Moon } from 'lunarphase-js';
 import { moonPhases } from '../../util/constants';
 
 function UserPage() {
@@ -9,6 +9,11 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const moonPhase = useSelector((store) => store.moonPhases);
   const tasks = useSelector((store) => store.tasks);
+  const [checked, setChecked] = useState(
+    new Array(tasks.length).fill(false)
+  );
+  // const [statusClass, setStatusClass] = useState("uncompleted-task");
+  // const [idCurrentlyCompleting, setIdCurrentlyCompleting] = useState(0);
 
   // dispatch to store for the tasks list; make sure to call DB only if store is empty:
   useEffect(() => {
@@ -52,17 +57,64 @@ function UserPage() {
     }
   }
 
+  // Need to update DB when status is marked as completed: 
+  const handleChange = (position) => {
+    const updatedTaskStatus = checked.map((task, index) =>
+      index === position ? !task : task);
+
+    setChecked(updatedTaskStatus);
+    console.log('currently checked?', updatedTaskStatus);
+    // const taskCompletionStatus = updatedTaskStatus.reduce(
+    //   (currentState, index) => {
+    //     if (currentState === true) {
+    //       currentState = false;
+    //       return currentState;
+    //     }
+    //     currentState = true;
+    //     return currentState;
+    //   }
+    // )
+    // event.preventDefault();
+    // setChecked(!checked);
+    // console.log('status of checked:', checked);
+    // const currentTask = tasks.find(task => task.task_id === idCurrentlyCompleting);
+    // console.log('The task to be marked as completed:', currentTask.task, currentTask.completion_status);
+  }
+
+  // {checked ? className="completed-task" : className="uncompleted-task"}
+
   return (
     <>
       <h2>Welcome, {user.username}!</h2>
       <h3>Here are your Tasks:</h3>
-      {tasks.map(task => {
+      {tasks.map(({ task, phase, category }, index) => {
         return (
-          <ul key={task.task_id}>
-            <label> 
-              <input type="checkbox" />{task.task}
-              <div className="category chip">{task.category}</div>
-              <div className="moon-phase chip">Phase: {getEmojiFromMoonId(task.phase)}</div>
+          <ul key={index}>
+            <label>
+              {!checked[index] ?
+                <div className="uncompleted-task">
+                  <input
+                    type="checkbox"
+                    id={`custom-checkbox=${index}`}
+                    checked={checked[index]}
+                    onChange={() => handleChange(index)}
+                  />
+                  {task}
+                  <div className="category chip">{category}</div>
+                  <div className="moon-phase chip">Phase: {getEmojiFromMoonId(phase)}</div>
+                </div>
+                :
+
+                <div className="completed-task">
+                  <input
+                    type="checkbox"
+                    id={`custom-checkbox=${index}`}
+                    checked={checked[index]}
+                    onChange={() => handleChange(index)}
+                  />
+                  {task}
+                </div>
+              }
             </label>
           </ul>
         )

@@ -78,3 +78,11 @@ another class for color/gradient so they look different. */
 .moon-phase {
     background-color: var(--moondark);
 }
+
+.completed-task {
+    text-decoration: line-through;
+}
+
+.uncompleted-task {
+    text-decoration: none;
+}

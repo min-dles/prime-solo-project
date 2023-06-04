@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Layouts/LoggedIn.css';
 import { choreCategories, moonPhases } from '../../util/constants';
+import { Moon } from 'lunarphase-js';
 
 function AddTask() {
   const user = useSelector((store) => store.user);
@@ -9,6 +10,15 @@ function AddTask() {
   const [taskDescription, setTaskDescription] = useState('');
   const [moonPhase, setMoonPhase] = useState(0);
   const [categoryChosen, setCategoryChosen] = useState(0);
+
+  // Need separate function to call Moon Phase emojis based on id: 
+  function getEmojiFromMoonId(phaseID) {
+    for (let name of moonPhases) {
+      if (name.id === Number(phaseID)) {
+        return Moon.emojiForLunarPhase(name.phase);
+      }
+    }
+  }
 
   const submitAddTask = (event) => {
     event.preventDefault();
@@ -63,7 +73,8 @@ function AddTask() {
                 value={phase.phase}
                 onChange={(event) => { setMoonPhase(event.target.id) }}
               />
-              {phase.phase}
+              {phase.phase}: 
+              {getEmojiFromMoonId(phase.id)}
             </label>
           )
         })}

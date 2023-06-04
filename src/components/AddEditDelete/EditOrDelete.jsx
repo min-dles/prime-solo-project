@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Layouts/LoggedIn.css';
 import { choreCategories, moonPhases } from '../../util/constants';
+import { Moon } from 'lunarphase-js';
 
 function EditOrDelete() {
 
@@ -11,6 +12,15 @@ function EditOrDelete() {
   const [taskDescription, setTaskDescription] = useState('');
   const [moonPhase, setMoonPhase] = useState(0);
   const [idCurrentlyEditing, setIdCurrentlyEditing] = useState(0);
+
+  // Need separate function to call Moon Phase emojis based on id: 
+  function getEmojiFromMoonId(phaseID) {
+    for (let phase of moonPhases) {
+      if (phase.id === phaseID) {
+        return Moon.emojiForLunarPhase(phase.phase);
+      }
+    }
+  }
 
   // dispatch to store for the tasks list; make sure to call DB only if store is empty:
   useEffect(() => {
@@ -64,10 +74,9 @@ function EditOrDelete() {
                 <>
                   <button onClick={() => { setIdCurrentlyEditing(task.task_id) }}>EDIT</button>
 
-
                   {task.task}
                   <div className="chip">{task.category}</div>
-                  <div className="chip">Phase: {task.phase}</div>
+                  <div className="chip">Phase: {getEmojiFromMoonId(task.phase)}</div>
                   <button
                     onClick={() => deleteTask(task.task_id)}
                   >

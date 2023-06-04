@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import { Moon, LunarPhase } from 'lunarphase-js';
+import { moonPhases } from '../../util/constants';
 
 function UserPage() {
 
@@ -8,6 +9,8 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const moonPhase = useSelector((store) => store.moonPhases);
   const tasks = useSelector((store) => store.tasks);
+  const TestMoon = Moon.emojiForLunarPhase(LunarPhase.FULL);
+  console.log('Tests!!!', TestMoon, LunarPhase.FULL);
 
   // dispatch to store for the tasks list; make sure to call DB only if store is empty:
   useEffect(() => {
@@ -42,6 +45,15 @@ function UserPage() {
     }
   }
 
+  // Need separate function to call Moon Phase emojis based on id: 
+  function getEmojiFromMoonId(phaseID) {
+    for (let phase of moonPhases) {
+      if (phase.id === phaseID) {
+        return Moon.emojiForLunarPhase(phase.phase);
+      }
+    }
+  }
+
   return (
     <>
       <h2>Welcome, {user.username}!</h2>
@@ -51,7 +63,7 @@ function UserPage() {
           <ul key={task.task_id}>
             <li> Description: {task.task}
               <div className="chip">{task.category}</div>
-              <div className="chip">Phase: {task.phase}</div>
+              <div className="chip">Phase: {getEmojiFromMoonId(task.phase)}</div>
             </li>
           </ul>
         )

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import '../Layouts/LoggedIn.css';
 import { moonPhases } from '../../util/constants';
+import { Moon } from 'lunarphase-js';
 
 export default function LunarPhaseView() {
   const dispatch = useDispatch();
@@ -33,10 +34,14 @@ export default function LunarPhaseView() {
   // Need to convert useParams moon phase IDs to get the moon phase names:
   const currentMoonPhase = moonPhases.find(phase => phase.id === Number(selectedPhase));
 
+  // Need separate function to call Moon Phase emojis based on id: 
+  function getEmojiFromName(phaseName) {
+    return Moon.emojiForLunarPhase(phaseName);
+  }
 
   return (
     <>
-      <h2>All Tasks Due During...</h2>
+      <h2>All Tasks Due During... {getEmojiFromName(currentMoonPhase.phase)}</h2>
       <h3>{currentMoonPhase.phase} Moon Phase:</h3>
 
       {tasksByPhase.length ? tasksByPhase.map(task => {

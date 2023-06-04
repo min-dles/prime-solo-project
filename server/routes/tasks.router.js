@@ -22,7 +22,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         JOIN "chore_categories" 
             ON user_todo.category_id=chore_categories.id
         WHERE "user_id"=($1)
-        ORDER BY "phase";`;
+        ORDER BY "phase" ASC, "task_id" ASC;`;
 
     let sqlValues = [req.user.id];
 

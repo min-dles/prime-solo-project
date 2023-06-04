@@ -81,8 +81,9 @@ another class for color/gradient so they look different. */
 
 .completed-task {
     text-decoration: line-through;
+    height: 40px;
 }
 
 .uncompleted-task {
-    text-decoration: none;
+    height: 40px;
 }

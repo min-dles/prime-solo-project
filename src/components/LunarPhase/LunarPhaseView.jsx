@@ -25,8 +25,6 @@ export default function LunarPhaseView() {
         phaseArray.push(obj);
       }
     }
-    console.log('selected phase:', selectedPhase);
-    console.log('task and phase arrays:', tasksArray, phaseArray);
     return phaseArray;
   }
 
@@ -34,12 +32,12 @@ export default function LunarPhaseView() {
 
   // Need to convert useParams moon phase IDs to get the moon phase names:
   const currentMoonPhase = moonPhases.find(phase => phase.id === Number(selectedPhase));
-  console.log('current moon phase:', currentMoonPhase);
 
 
   return (
     <>
-      <h3>{currentMoonPhase.phase}</h3>
+      <h2>All Tasks Due During...</h2>
+      <h3>{currentMoonPhase.phase} Moon Phase:</h3>
 
       {tasksByPhase.length ? tasksByPhase.map(task => {
         return (

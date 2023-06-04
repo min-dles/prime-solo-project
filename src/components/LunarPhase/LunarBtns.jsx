@@ -17,7 +17,7 @@ function LunarBtns() {
               className="btn-styling navLink"
               disabled={Number(selectedPhase) === moonPhase.id}
             >
-              {moonPhase.phase}
+              {moonPhase.phase} Moon
             </button>
           </Link>
         )

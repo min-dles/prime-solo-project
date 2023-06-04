@@ -9,8 +9,6 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const moonPhase = useSelector((store) => store.moonPhases);
   const tasks = useSelector((store) => store.tasks);
-  const TestMoon = Moon.emojiForLunarPhase(LunarPhase.FULL);
-  console.log('Tests!!!', TestMoon, LunarPhase.FULL);
 
   // dispatch to store for the tasks list; make sure to call DB only if store is empty:
   useEffect(() => {

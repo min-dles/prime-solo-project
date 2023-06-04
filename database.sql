@@ -30,11 +30,11 @@ CREATE TABLE "moon_phasesAPI" (
 	
 -- INSERT INTO MOON PHASES: 
 INSERT INTO "moon_phasesAPI" ("phase_name")
-VALUES ('new moon'),
+VALUES ('new'),
 ('waxing crescent'),
 ('first quarter'),
 ('waxing gibbous'),
-('full moon'),
+('full'),
 ('waning gibbous'),
 ('last quarter'),
 ('waning crescent');

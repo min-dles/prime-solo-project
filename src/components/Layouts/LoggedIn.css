@@ -89,3 +89,9 @@ another class for color/gradient so they look different. */
     height: 40px;
     list-style-type: none;
 }
+
+.customHr {
+    width: 90%;
+    height: 1px;
+    background-color: black;
+}

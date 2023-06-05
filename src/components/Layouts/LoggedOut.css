@@ -27,3 +27,8 @@
         ". . . . ."
         "white-border white-border white-border white-border white-border";
 }
+
+/* Additional styling elements: */
+.big-emoji {
+    font-size: 50px;
+}

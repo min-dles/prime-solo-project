@@ -47,7 +47,7 @@ export default function LunarPhaseView() {
       {tasksByPhase.length ? tasksByPhase.map(task => {
         return (
           <ul key={task.task_id}>
-            <li>Description: {task.task}
+            <li>{task.task}
               <div className="category chip">{task.category}</div>
             </li>
           </ul>

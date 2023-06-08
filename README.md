@@ -7,13 +7,13 @@ Estimated completion - June 2nd 2023
 
 ## STRETCH GOAL(S)
 1. Higher Priority Items: 
-  - Checkboxes on Tasks (just for HOME view, not any other views)
   - Finalize: README (project desc seen on Github), Info Page (tribute, thanks, etc.), and About (Typewriter animation text for "About" blurb)
-  - Swap out Moon Phase ID for the Emojis in the chips
   - Frame around className="content-view"
   - Edit / Delete buttons changed to Icons/Emojis 
   - Clean up LoggedIn view layout (borders, typography, spacing)
-  - Switch around Login VS Register New User on Home page (LandingPage) 
+  - Switch around Login VS Register New User on Home page 
+  (LandingPage) 
+  - refactor the <ul> elements so that KEY is on <li>
 2. DELETE: confirmation pop-up
 3. Change Favicon on tab to a moon emoji
 4. Add transition animations between views

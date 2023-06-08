@@ -29,6 +29,7 @@
     grid-area: navbar;
     justify-self: end;
     align-self: center;
+    margin-right: 25px;
     background-color: var(--moondark);
 }
 
@@ -94,4 +95,9 @@ another class for color/gradient so they look different. */
     width: 90%;
     height: 1px;
     background-color: black;
+}
+
+img {
+    border-radius: 25px;
+    margin-right: 100px;
 }

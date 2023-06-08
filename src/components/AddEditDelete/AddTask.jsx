@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import '../Layouts/LoggedIn.css';
 import './AddEditDelete.css';
 import { choreCategories, moonPhases } from '../../util/constants';
@@ -8,6 +9,7 @@ import { Moon } from 'lunarphase-js';
 function AddTask() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const history = useHistory();
   const [taskDescription, setTaskDescription] = useState('');
   const [moonPhase, setMoonPhase] = useState(0);
   const [categoryChosen, setCategoryChosen] = useState(0);
@@ -38,6 +40,7 @@ function AddTask() {
         payload: data
       })
       clearFields();
+      history.push('/user');
     } else {
       alert('Please fill out all fields before submitting a new task entry!');
     }

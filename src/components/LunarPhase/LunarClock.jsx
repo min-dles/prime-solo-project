@@ -7,7 +7,7 @@ import './LunarPhase.css';
 // react (useEffect, useState) for more reactive accuracy 
 function LunarClock() {
     const date = new Date();
-    const phase = Moon.lunarPhase(date);
+    const phase = Moon.lunarPhase();
     // Need to convert Date obj to a string for rendering
     // on the DOM:
     const dateString = date.toDateString();

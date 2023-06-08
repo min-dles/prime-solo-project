@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../Layouts/LoggedOut.css';
 
-// LUNAR PHASE: 
-import { Moon } from "lunarphase-js";
-
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
 

@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { moonPhases } from '../../util/constants';
+import { Moon } from 'lunarphase-js';
 import '../Layouts/LoggedIn.css';
 
-// STEPS: 
-// 1. Need to access store for user's task list 
-// 2. Need to identify chore categories (switch statement?)
-// Use State to keep track of a toggled Category btn 
-// 3. Run through tasks array and only pull the tasks matching a chosen category
-// 4. Display the tasks for user 
-
 function CategoriesView() {
+
 	const dispatch = useDispatch();
 	const { selectedCategory } = useParams();
 	const tasks = useSelector(store => store.tasks);
@@ -36,6 +32,15 @@ function CategoriesView() {
 
 	const tasksByCategory = listByCategory(tasks);
 
+  // Need separate function to call Moon Phase emojis based on id: 
+  function getEmojiFromMoonId(phaseID) {
+    for (let phase of moonPhases) {
+      if (phase.id === phaseID) {
+        return Moon.emojiForLunarPhase(phase.phase);
+      }
+    }
+  }
+
 	return (
 		<>
 			<h3>{selectedCategory} Category:</h3>
@@ -44,8 +49,8 @@ function CategoriesView() {
 				tasksByCategory.length ? tasksByCategory.map(task => {
 					return (
 						<ul key={task.task_id}>
-							<li>Description: {task.task}
-								<div className="chip">Phase: {task.phase}</div>
+							<li>{task.task}
+								<div className="moon-phase chip">Phase: {getEmojiFromMoonId(task.phase)}</div>
 							</li>
 						</ul>
 					)

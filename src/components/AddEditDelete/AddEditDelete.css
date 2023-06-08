@@ -1,0 +1,88 @@
+.custom-h3 {
+  font-size: 25px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-labels {
+  font-size: 25px;
+  padding: 20px 0;
+}
+
+.input-fields-styling {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 0 0 8px;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+.input-fields-styling:focus {
+  background-color: rgb(238, 238, 238);
+}
+
+.edit-fields-styling {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 0 0 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.edit-fields-styling:focus {
+  background-color: rgb(238, 238, 238);
+}
+
+.radios-text {
+font-size: 20px;
+}
+
+.radios-styling {
+  height: 20px;
+  width: 20px;
+}
+
+/* need custom styling for EDIT and DELETE btns: */
+.edit-delete {
+  padding: 15px;
+  margin: 0 10px;
+  background-color:rgb(238, 238, 238);
+}
+
+.edit-delete:hover {
+  background-color:rgb(156, 156, 156);
+}
+
+.delete-only {
+  background-color:rgba(230, 87, 87, 0.5);
+  font-weight: bold;
+}
+
+.delete-only:hover {
+  background-color: rgba(230, 87, 87, 0.9);
+}
+
+
+.btns {
+  display: inline-block;
+  color: #f2f2f2;
+  background-color: #000000;
+  text-align: center;
+  padding: 24px 10px;
+  margin: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  max-width: 200px;
+  border: solid #000000;
+  cursor: pointer;
+  outline: 0;
+}
+
+.btns:hover {
+  background-color: rgb(156, 156, 156);
+  border: solid black; 
+  color: black;
+}

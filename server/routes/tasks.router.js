@@ -12,15 +12,17 @@ const pool = require('../modules/pool');
 router.get('/', rejectUnauthenticated, (req, res) => {
     let sqlQuery = `
         SELECT user_todo.id AS "task_id", 
-            user_todo.user_id, 
-            user_todo.todo_description AS "task", 
-            user_todo.moon_id AS "phase", 
-            chore_categories.id AS "category_id", 
-            chore_categories.category AS "category" 
+            user_todo.user_id,
+            user_todo.todo_description AS "task",
+            user_todo.moon_id AS "phase",
+            user_todo.completion_status,
+            chore_categories.id AS "category_id",
+            chore_categories.category AS "category"
         FROM "user_todo"
         JOIN "chore_categories" 
             ON user_todo.category_id=chore_categories.id
-        WHERE "user_id"=($1);`;
+        WHERE "user_id"=($1)
+        ORDER BY "phase" ASC, "task_id" ASC;`;
 
     let sqlValues = [req.user.id];
 
@@ -65,12 +67,31 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
             WHERE "id"=$4
             AND "user_id"=$5;`;
     let sqlValues = [taskUpdate, categoryUpdate, phaseUpdate, idToUpdate, userID];
-    console.log('sqlValues:', sqlValues);
     pool.query(sqlQuery, sqlValues)
         .then((dbRes) => {
             res.sendStatus(200);
         }).catch((dbErr) => {
             console.log('error with PUT task-list route:', dbErr);
+            res.sendStatus(500);
+        })
+})
+
+// Need another PUT route to update tasks for completion status:
+router.put('/status/:id', rejectUnauthenticated, (req, res) => {
+    let taskStatus = req.body.completion_status;
+    let taskID = req.params.id;
+    let userID = req.user.id;
+    let sqlQuery = `
+        UPDATE "user_todo"
+            SET "completion_status"=$1
+            WHERE "id"=$2
+            AND "user_id"=$3;`;
+    let sqlValues = [taskStatus, taskID, userID];
+    pool.query(sqlQuery, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200);
+        }).catch((dbErr) => {
+            console.log('error in PUT route for completion status:', dbErr);
             res.sendStatus(500);
         })
 })

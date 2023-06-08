@@ -102,7 +102,9 @@ function App() {
             <Redirect to="/user" />
             :
             // Otherwise, show the login page
-            <LoginPage />
+            <LoggedOut>
+              <LoginPage />
+            </LoggedOut>
           }
         </Route>
 
@@ -116,7 +118,9 @@ function App() {
             <Redirect to="/user" />
             :
             // Otherwise, show the registration page
-            <RegisterPage />
+            <LoggedOut>
+              <RegisterPage />
+            </LoggedOut>
           }
         </Route>
 

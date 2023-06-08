@@ -1,14 +1,15 @@
 import React from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+import '../Layouts/LoggedOut.css';
 
-function LoginPage() {
+export default function LoginPage(){
   const history = useHistory();
 
   return (
-    <>
+    <div>
       <LoginForm />
-      {/* <button
+      <button
         type="button"
         className="btn btn_asLink"
         onClick={() => {
@@ -16,9 +17,7 @@ function LoginPage() {
         }}
       >
         Register
-      </button> */}
-    </>
-  );
+      </button>
+    </div>
+  )
 }
-
-export default LoginPage;

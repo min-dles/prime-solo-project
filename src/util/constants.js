@@ -1,36 +1,44 @@
 // make variables for moon phases and chore category arrays:
 export const moonPhases = [
   {
-    phase: 'New Moon',
-    id: 1
+    phase: 'New',
+    id: 1,
+    // enum: NEW
   },
   {
     phase: 'Waxing Crescent',
-    id: 2
+    id: 2,
+    // enum: WAXING_CRESCENT
   },
   {
     phase: 'First Quarter',
-    id: 3
+    id: 3,
+    // enum: FIRST_QUARTER
   },
   {
     phase: 'Waxing Gibbous',
-    id: 4
+    id: 4,
+    // enum: WAXING_GIBBOUS
   },
   {
-    phase: 'Full Moon',
-    id: 5
+    phase: 'Full',
+    id: 5,
+    // enum: FULL
   },
   {
     phase: 'Waning Gibbous',
-    id: 6
+    id: 6,
+    // enum: WANING_GIBBOUS
   },
   {
     phase: 'Last Quarter',
-    id: 7
+    id: 7,
+    // enum: LAST_QUARTER
   },
   {
     phase: 'Waning Crescent',
-    id: 8
+    id: 8,
+    // enum: WANING_CRESCENT
   }
 ];
 

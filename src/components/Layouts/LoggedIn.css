@@ -1,3 +1,11 @@
+/* --------------CSS VARIABLES-------------- */
+:root {
+    --moonlight: rgb(238, 238, 238);
+    --moonshading: rgb(156, 156, 156);
+    --moon-shadow: rgb(51, 51, 51);
+    --moondark: rgb(0, 0, 0);
+  }
+
 /* --------------CSS GRID-------------- */
 * {
     box-sizing: border-box;
@@ -21,7 +29,8 @@
     grid-area: navbar;
     justify-self: end;
     align-self: center;
-    background-color: #000000;
+    margin-right: 25px;
+    background-color: var(--moondark);
 }
 
 .lunar-clock {
@@ -40,7 +49,7 @@
 }
 
 .page-content {
-    background-color: white;
+    background-color: rgba(238, 238, 238, 0.8);
     grid-area: page-content;
     padding: 20px 40px;
     max-height: 100%;
@@ -60,6 +69,35 @@ another class for color/gradient so they look different. */
     font-size: 15px;
     line-height: 30px;
     border-radius: 25px;
-    color: white;
-    background-color: #000000;
+    color: var(--moonlight);
+}
+
+.category {
+    background-color: var(--moon-shadow);
+}
+
+.moon-phase {
+    background-color: var(--moondark);
+}
+
+.completed-task {
+    text-decoration: line-through;
+    height: 40px;
+    list-style-type: none;
+}
+
+.uncompleted-task {
+    height: 40px;
+    list-style-type: none;
+}
+
+.customHr {
+    width: 90%;
+    height: 1px;
+    background-color: black;
+}
+
+img {
+    border-radius: 25px;
+    margin-right: 100px;
 }

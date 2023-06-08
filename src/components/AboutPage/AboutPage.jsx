@@ -7,10 +7,10 @@ function AboutPage() {
   const phaseEmoji = Moon.lunarPhaseEmoji();
 
   return (
-    <>
+    <center>
       <p>Use Chore Cycle to sync your recurring tasks with the phases of the moon! Get more in tune with your monthly rituals and the rhythms of nature.</p>
-      <p>{phaseEmoji}</p>
-    </>
+      <p className="big-emoji">{phaseEmoji}</p>
+    </center>
   );
 }
 

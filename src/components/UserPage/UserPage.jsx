@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import { Moon } from 'lunarphase-js';
+import { moonPhases } from '../../util/constants';
 
 function UserPage() {
 
@@ -42,23 +43,60 @@ function UserPage() {
     }
   }
 
+  // Need separate function to call Moon Phase emojis based on id: 
+  function getEmojiFromMoonId(phaseID) {
+    for (let phase of moonPhases) {
+      if (phase.id === phaseID) {
+        return Moon.emojiForLunarPhase(phase.phase);
+      }
+    }
+  }
+
+  // Need to update DB when status is marked as completed: 
+  const handleChange = (taskId) => {
+    // can't use Index; need to sort by TaskID so DB and client-side are synced correctly 
+    const taskToUpdate = tasks.find((task) => task.task_id === taskId);
+    console.log('taskToUpdate:', taskToUpdate);
+    const payload = {
+      task_id: taskToUpdate.task_id,
+      completion_status: !taskToUpdate.completion_status
+    }
+    console.log('payload:', payload);
+    dispatch({
+      type: 'COMPLETE_TASK',
+      payload
+    })
+  }
+
   return (
     <>
       <h2>Welcome, {user.username}!</h2>
       <h3>Here are your Tasks:</h3>
-      {tasks.map(task => {
-        return (
-          <ul key={task.task_id}>
-            <li> Description: {task.task}
-              <div className="chip">{task.category}</div>
-              <div className="chip">Phase: {task.phase}</div>
+      <ul>
+        {tasks.map(({ task, task_id, phase, category, completion_status
+        }) => {
+          return (
+            <li 
+            key={task_id}
+            className={completion_status ? "completed-task" : "uncompleted-task"}
+            >
+              <label>
+                  <input
+                    type="checkbox"
+                    id={`custom-checkbox=${task_id}`}
+                    checked={completion_status}
+                    onChange={() => handleChange(task_id)}
+                  />
+                  {task}
+                  <div className="category chip">{category}</div>
+                  <div className="moon-phase chip">Phase: {getEmojiFromMoonId(phase)}</div>
+              </label>
             </li>
-          </ul>
-        )
-      })}
+          )
+        })}
+      </ul>
     </>
   );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;

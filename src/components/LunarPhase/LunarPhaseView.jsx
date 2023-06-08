@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import '../Layouts/LoggedIn.css';
 import { moonPhases } from '../../util/constants';
+import { Moon } from 'lunarphase-js';
 
 export default function LunarPhaseView() {
   const dispatch = useDispatch();
@@ -25,8 +26,6 @@ export default function LunarPhaseView() {
         phaseArray.push(obj);
       }
     }
-    console.log('selected phase:', selectedPhase);
-    console.log('task and phase arrays:', tasksArray, phaseArray);
     return phaseArray;
   }
 
@@ -34,18 +33,22 @@ export default function LunarPhaseView() {
 
   // Need to convert useParams moon phase IDs to get the moon phase names:
   const currentMoonPhase = moonPhases.find(phase => phase.id === Number(selectedPhase));
-  console.log('current moon phase:', currentMoonPhase);
 
+  // Need separate function to call Moon Phase emojis based on id: 
+  function getEmojiFromName(phaseName) {
+    return Moon.emojiForLunarPhase(phaseName);
+  }
 
   return (
     <>
-      <h3>{currentMoonPhase.phase}</h3>
+      <h2>All Tasks Due During... {getEmojiFromName(currentMoonPhase.phase)}</h2>
+      <h3>{currentMoonPhase.phase} Moon Phase:</h3>
 
       {tasksByPhase.length ? tasksByPhase.map(task => {
         return (
           <ul key={task.task_id}>
-            <li>Description: {task.task}
-              <div className="chip">{task.category}</div>
+            <li>{task.task}
+              <div className="category chip">{task.category}</div>
             </li>
           </ul>
         )

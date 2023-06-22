@@ -64,7 +64,7 @@ function InfoPage() {
       <p>This project was inspired by my friend (thank you, Elena!) and I'm beyond grateful to my peers,
         Prime instructors, mentors, friends & chosen family (shoutout to Kyle for the kickoff data,
         Alyssa for the beautiful moon pic, and Jason for telescope access!),
-        and my wonderful wife for all the support and guidance in creating this app.</p>
+        and my wonderful wife Ximena for all the support and guidance in creating this app.</p>
 
       <p>Next steps and aspirations for Chore Cycle are to get deployed for online
         use, connect tasks more directly with Astronomy API, and further customize

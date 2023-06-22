@@ -21,7 +21,9 @@ else {
     pool = new pg.Pool({
         host: 'localhost',
         port: 5432,
+        max: 10,                    // max number of connections for the pool
         database: 'chore_cycle',
+        idleTimeoutMillis: 30000    // 30 seconds before timeout/cancel query 
     });
 }
 

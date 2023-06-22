@@ -11,3 +11,4 @@ function Footer() {
 }
 
 export default Footer;
+// Footer is not being used at this time. Might implement a footer in the future.

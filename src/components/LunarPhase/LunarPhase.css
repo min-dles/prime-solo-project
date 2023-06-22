@@ -29,61 +29,52 @@
 .moon {
     width: 150px;
     height: 150px;
+    margin-left: 10%;
     border-radius: 50%;
     border: solid 1px;
 }
 
 .first-quarter {
-    margin: auto;
     background: linear-gradient(90deg,
             var(--moon-shadow) 46%,
             var(--moonlight) 52%);
 }
 
 .waxing-crescent {
-    margin: auto;
     background: linear-gradient(90deg,
             var(--moon-shadow) 73%,
             var(--moonlight) 78%);
 }
 
 .new {
-    margin-left: 70%;
-    background: linear-gradient(90deg,
-            var(--moonshading),
-            var(--moon-shadow));
+    background: var(--moon-shadow);
 }
 
 .waning-crescent {
-    margin: auto;
     background: linear-gradient(90deg,
             var(--moonlight) 22%,
             var(--moon-shadow) 28%);
 }
 
 .last-quarter {
-    margin: auto;
     background: linear-gradient(90deg,
             var(--moonlight) 46%,
             var(--moon-shadow) 52%);
 }
 
 .waning-gibbous {
-    margin: auto;
     background: linear-gradient(90deg,
             var(--moonlight) 73%,
             var(--moon-shadow) 78%);
 }
 
 .full {
-    margin-left: 10%;
     background: linear-gradient(90deg,
             var(--moonlight),
             var(--moonshading));
 }
 
 .waxing-gibbous {
-    margin: auto;
     background: linear-gradient(90deg,
             var(--moon-shadow) 22%,
             var(--moonlight) 28%);

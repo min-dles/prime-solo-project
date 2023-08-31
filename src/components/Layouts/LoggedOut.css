@@ -34,3 +34,27 @@
 .big-emoji {
     font-size: 50px;
 }
+
+/* Responsive Layout for Mobile: */
+@media screen and (max-width: 500px) {
+    .page-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .content-a {
+        order: 2;
+        padding: 20px;
+        margin-top: 65px;
+        height: 100vh;
+    }
+    .content-b {
+        order: 1;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: black;
+    }
+    .blank-space {
+        display: none;
+    }
+}
